@@ -1,14 +1,14 @@
 Folgende Regeln gelten bei der Arbeit am Code:
-* Alles was hinzugef¸gt wird ist ordentlich zu dokumentieren und formatieren! 
-* Alle Variablen und Funktionen sind grunds‰tzlich klein zu schreiben oder mit CamelCase
-* Keine '_' f¸r Funktionsnamen und Variablen, dass ist obsolete ;)
-* ƒnderungen am Code von Anderen werden abgesprochen
+* Alles was hinzugefügt wird ist ordentlich zu dokumentieren und formatieren! 
+* Alle Variablen und Funktionen sind grundsätzlich klein zu schreiben oder mit CamelCase
+* Keine '_' für Funktionsnamen und Variablen, dass ist obsolete ;)
+* Änderungen am Code von Anderen werden abgesprochen
 * Klassen bestehen aus:
 	* einer Header-Datei mit der Deklaration 
 	* einer CPP-Datei mit der Implementierung
-* Alle Parameter f¸r Funktionen beginnen mit 'Param' um sie von Attributen/Variablen unterscheiden zu kˆnnen
+* Alle Parameter für Funktionen beginnen mit 'Param' um sie von Attributen/Variablen unterscheiden zu können
 * Instanziere Objekte sind am Ende der Nutzung zu 'delete'n
 
 Folgende Regeln gelten bei der Arbeit mit Git:
-* Nicht jeden Scheiﬂ als commit nehmen, sondern nur grˆﬂere ƒnderungen mit aussagekr‰fter Commit-Message
+* Nicht jeden Scheiß als commit nehmen, sondern nur größere Änderungen mit aussagekräfter Commit-Message
 * Viele kleine Commit's bei Bedarf rebase'n um Sie zusammenzufassen
