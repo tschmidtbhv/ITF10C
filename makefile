@@ -1,2 +1,2 @@
 all:
-	g++ ipaddress.cpp subnet.cpp main.cpp -o subnet-tool
+	g++ main.cpp ipaddress.cpp subnet.cpp -o subnet-tool

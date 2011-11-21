@@ -1,7 +1,14 @@
 /*
 Diese Datei beschreibt alle Methoden und Attribute der Klasse 'ipaddress'
-wenn du fleißig an den Funktionen arbeiten möchtest, dann schau unter <ipaddress.cpp>
+wenn du fleiÃŸig an den Funktionen arbeiten möchtest, dann schau unter
+<ipaddress.cpp>
 */
+
+/* Einbinden der Header fÃ¼r den String-Datentyp */
+#include <string>
+/* Using std::string wichtig bei Os X */
+using std::string;
+
 class ipaddress {
 	private:
 		int block1;		// Erster Block (192.)
@@ -16,6 +23,6 @@ class ipaddress {
 			int block3,
 			int block4
 		);	// Konstruktor
-		string getIPAsString();		// Gibt die IP als formatieren String in folgendem Format aus XXX.XXX.XXX.XXX
+		string     getIPAsString();		// Gibt die IP als formatieren String in folgendem Format aus XXX.XXX.XXX.XXX
 		int	   getIPAsInt();		// Gibt die IP als Int aus, aus 192.168.0.1 wird 192168000001
 };

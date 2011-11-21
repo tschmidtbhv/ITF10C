@@ -1,10 +1,10 @@
-// Header für die Klassen einbinden, damit Sie sich selbst kennt.
+// Header fÃ¼r die Klassen einbinden, damit Sie sich selbst kennt.
 #include "subnet.h"
 
-// Konstruktor 
+// Konstruktor
 subnet::subnet(
 	/* Parameter */
-) 
-{	
+)
+{
 	/* Initialisieren */
 }

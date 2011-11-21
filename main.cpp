@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-// Klassen einbinden damit wir diese instanzieren können
+// Klassen einbinden damit wir diese instanzieren kÃ¶nnen
 #include "ipaddress.h"
 #include "subnet.h"
 
