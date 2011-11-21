@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+using std::string;
 
 // Klassen einbinden damit wir diese instanzieren können
 #include "ipaddress.h"
@@ -9,6 +10,8 @@ using namespace std;
 
 int main(void) {
 	ipaddress* schinken = new ipaddress();
+	cout << schinken->getIPAsString() << endl;
+
 	subnet* kaese = new subnet();
 
 	delete kaese;
