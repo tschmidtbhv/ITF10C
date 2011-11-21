@@ -1,6 +1,6 @@
 /*
 Diese Datei beschreibt alle Methoden und Attribute der Klasse 'subnet'
-wenn du fleißig an den Funktionen arbeiten möchtest, dann schau unter <subnet.cpp>
+wenn du fleiï¬‚ig an den Funktionen arbeiten mË†chtest, dann schau unter <subnet.cpp>
 */
 class subnet {
 	private:
@@ -18,7 +18,7 @@ class subnet {
 		);					 // Konstruktor
 
 		bool search();		 // Suchfunktion
-		void addIP(int ip);  // IP hinzufügen
+		void addIP(int ip);  // IP hinzufÂ¸gen
 		void dropIP(int ip); // IP entfernen
 		int getRangeStart(); // Netzwerk-Adresse Start abfragen
 		int getRangeEnd();	 // Netzwerk-Adresse Ende abfragen

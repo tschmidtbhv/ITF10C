@@ -1,10 +1,10 @@
 /*
 Diese Datei beschreibt alle Methoden und Attribute der Klasse 'ipaddress'
-wenn du fleißig an den Funktionen arbeiten m�chtest, dann schau unter
+wenn du flei√üig an den Funktionen arbeiten mˆchtest, dann schau unter
 <ipaddress.cpp>
 */
 
-/* Einbinden der Header für den String-Datentyp */
+/* Einbinden der Header f√ºr den String-Datentyp */
 #include <string>
 /* Using std::string wichtig bei Os X */
 using std::string;
