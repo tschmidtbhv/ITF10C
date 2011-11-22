@@ -26,11 +26,18 @@ void subnet::addIP(ipaddress paramipaddress) {
 };
 
 void subnet::dropIP(long paramIp) {
-
+    for(int i = 0; i < this->usedAddresses.size(); i++) 
+    {
+        if(this->usedAddresses[i].getLong() == paramIp)
+        {
+            this->usedAddresses.erase(this->usedAddresses.begin() + i);
+            break;
+        }
+    }
 };
 
 vector<ipaddress> subnet::getIPs() {
-
+    return this->usedAddresses;
 }
 
 int subnet::getRangeStart() {

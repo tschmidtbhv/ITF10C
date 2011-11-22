@@ -26,6 +26,7 @@ class subnet {
      
         // Array für extra vergebene IP's
         vector<ipaddress> usedAddresses;
+        vector<ipaddress>::iterator i;
     
 	public:
         // Default-Konstruktor (muss vorhanden sein)
