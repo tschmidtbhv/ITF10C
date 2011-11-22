@@ -11,15 +11,33 @@
 using std::string;
 using std::stringstream;
 
+// Konstruktor für 192.168.XXX.XXX
 ipaddress::ipaddress(
-	/* Parameter */
+    int paramblock3,
+    int paramblock4
 )
 {
 	/* Initialisieren */
     this->block1 = 192;
     this->block2 = 168;
-    this->block3 = 0;
-    this->block4 = 1;
+    this->block3 = paramblock3;
+    this->block4 = paramblock4;
+}
+
+
+// Konstruktor für XXX.XXX.XXX.XXX
+ipaddress::ipaddress(
+    int paramblock1,
+    int paramblock2,
+    int paramblock3,
+    int paramblock4
+)
+{
+	/* Initialisieren */
+    this->block1 = 192;
+    this->block2 = 168;
+    this->block3 = paramblock3;
+    this->block4 = paramblock4;
 }
 
 string ipaddress::getIPAsString() {
@@ -35,4 +53,27 @@ string ipaddress::getIPAsString() {
     
     // Stringstream als String gewandelt zurückgeben
     return output.str();
+}
+
+int ipaddress::getIPAsInt() {
+    
+    /*
+     Beispiel:
+     192168000001
+     192.........
+        168......
+           000...
+              001
+    */
+    
+    // Variable anlegen
+    int output = 0;
+    
+    output = output + this->block1 * 10^9;
+    output = output + this->block2 * 10^6;
+    output = output + this->block3 * 10^3;
+    output = output + this->block4;
+    
+    // Variable zurückgeben
+    return output;
 }

@@ -9,9 +9,10 @@ using std::string;
 #include "subnet.h"
 
 int main(void) {
-	ipaddress* schinken = new ipaddress();
+	ipaddress* schinken = new ipaddress(0, 1);
 	cout << schinken->getIPAsString() << endl;
-
+    cout << schinken->getIPAsInt() << endl;
+    
 	subnet* kaese = new subnet();
 
 	delete kaese;
