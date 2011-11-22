@@ -15,6 +15,20 @@ int main(void) {
     
 	subnet* kaese = new subnet();
 
+    
+    // Benutzereingabe - Anzahl Netze
+    
+    // Array mit der Anzahl von Netzen erzeugen
+    
+    // Anzahl Clients je Subnetz 
+    
+    // Subnetze anzeigen
+    // Subnetz hinzufügen
+    // Hostnamen zu IP-Adresse ablegen
+    // IP-Adresse anzeigen
+    // IP-Adresse suchen
+    // Beenden 
+        
 	delete kaese;
 	delete schinken;
 
