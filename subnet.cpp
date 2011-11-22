@@ -42,14 +42,28 @@ void subnet::dropIP(ipaddress paramIp) {
 
 // Sucht ob eine IP in ein Subnetz gehört
 bool subnet::searchValid(ipaddress paramIp) {
-    
-    
-    return false;
+    if(
+       this->rangeStart <= paramIp.getLong() &&
+       paramIp.getLong() <= this->rangeEnd
+       ) 
+    {
+        return true; 
+    } 
+    else
+    { 
+        return false;
+    }
 }
 
-// Sucht ob die IP im Subnetz vergeben ist
+// Sucht ob die IP im Subnetz mit Hostnamen vergeben ist
 bool subnet::searchExists(ipaddress paramIp) {
-
+    for(int i = 0; i < this->usedAddresses.size(); i++)
+    {
+        if(this->usedAddresses[i].getLong() == paramIp.getLong())
+        {
+            return true;
+        }
+    }
     return false;
 }
 

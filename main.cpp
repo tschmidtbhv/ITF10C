@@ -43,5 +43,9 @@ int main(void) {
      | 192.168.000.001 | Celsius   |
     */
     
+    /*
+     Optional anbindung an SQLite um Subnetz-Daten zu speichern und später wieder zu laden. 
+    */
+    
 	return EXIT_SUCCESS;
 }
