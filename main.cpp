@@ -9,6 +9,12 @@ using std::string;
 #include "ipaddress.h"
 #include "subnet.h"
 
+int ipBlock1, ipBlock2,ipBlock3, ipBlock4;
+
+void selectedPoint(int choosenOne);
+void splitAndConvert();
+
+
 int main(void) {
 	
     ipaddress* schinken = new ipaddress(0, 1);
@@ -43,5 +49,88 @@ int main(void) {
      | 192.168.000.001 | Celsius   |
     */
     
+    // 
+    int choosenOne;
+    
+    do {
+        printf("\n1 : Subnetz erstellen\n");
+        printf("2 : IP einfügen\n");
+        printf("3 : IP löschen\n");
+        printf("9 : Ende\n");
+        printf("Ihre Wahl : ");
+        cin << choosenOne;
+        selectedPoint(int choosenOne)
+    } while (choosenOne != 9);
+    
 	return EXIT_SUCCESS;
+}
+
+
+/*
+ * inputIP
+ *  
+ * @params int choosenOne  
+ *
+ */
+
+void selectedPoint(int choosenOne) {
+    
+    
+    switch (choosenOne) {
+        case 1:
+            //createSubnet();
+            break;
+            
+        case 2:
+            splitAndConvert();
+            break;
+            
+        case 3:
+            
+            //deleteIP();
+            break;
+        default:
+            cout << "Sie haben eine falsche Nummer eingegeben!";
+            break;
+    }
+
+}
+
+
+/*
+ * splitAndConvert
+ * Split the input value and convert char string to int
+ * @params 
+ * 
+ * return void
+ */
+
+void splitAndConvert() {
+    
+    char ipAdress[16];
+    cin >> ipAdress;
+    char* ipToken = strtok(ipAdress, "...");
+    
+    if (ipToken)
+    {
+        ipBlock1 = atoi(ipToken);
+        
+        for (int i = 0; i < 4; i++) {
+            switch (i) {
+                case 1:
+                    ipBlock2 =  atoi(strtok(NULL, "..."));
+                    break;
+                case 2:
+                    ipBlock3 =  atoi(strtok(NULL, "..."));
+                    break;
+                case 3:
+                    ipBlock4 =  atoi(strtok(NULL, "..."));
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        
+    }
 }
