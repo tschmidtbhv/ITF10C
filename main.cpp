@@ -14,8 +14,7 @@ int main(void) {
     cout << schinken->getIPAsLongInt() << endl;
     
 	subnet* kaese = new subnet();
-
-    
+        
     // Benutzereingabe - Anzahl Netze
     
     // Array mit der Anzahl von Netzen erzeugen

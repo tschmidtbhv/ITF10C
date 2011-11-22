@@ -25,7 +25,6 @@ ipaddress::ipaddress(
     int paramblock4
 )
 {
-	/* Initialisieren */
     this->block1 = 192;
     this->block2 = 168;
     this->block3 = paramblock3;
@@ -41,7 +40,6 @@ ipaddress::ipaddress(
     int paramblock4
 )
 {
-	/* Initialisieren */
     this->block1 = 192;
     this->block2 = 168;
     this->block3 = paramblock3;

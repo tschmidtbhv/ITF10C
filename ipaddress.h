@@ -13,10 +13,17 @@ using std::string;
 
 class ipaddress {
 	private:
-		int block1;		// Erster Block (192.)
-		int block2;		// Zweiter Block (168.)
-		int block3;		// Dritter Block (0.)
-		int block4;		// Vierter Block (1)
+        // Erster Block (192.)
+		int block1;	
+	
+        // Zweiter Block (168.)
+		int block2;		
+    
+        // Dritter Block (0.)
+		int block3;		
+    
+        // Vierter Block (1)
+		int block4;		
 	public:
 
         // Default-Konstruktor
