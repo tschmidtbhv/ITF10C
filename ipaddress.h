@@ -31,8 +31,8 @@ class ipaddress {
     
         // Konstruktor für 192.168.XXX.XXX 
 		ipaddress(
-                  int paramblock3,
-                  int paramblock4
+            int paramblock3,
+            int paramblock4
         );	
     
     	// Konstruktor für XXX.XXX.XXX.XXX
@@ -47,6 +47,6 @@ class ipaddress {
 		string getIPAsString();	
 	
         // Gibt die IP als Int aus, aus 192.168.0.1 wird 192168000001
-		long int getIPAsLongInt();		
+		long getIPAsLong();		
 };
 #endif

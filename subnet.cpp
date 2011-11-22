@@ -20,23 +20,32 @@ subnet::subnet(
     this->rangeEnd = paramrangeEnd;
     this->broadcast = parambroadcast;
     this->usedAddressesCount = 0;
-}
+};
+
+void subnet::addIP(ipaddress paramipaddress) {
+    this->usedAddressesCount++;
+    this->usedAddresses = new ipaddress[this->usedAddressesCount];
+    
+    
+};
+
+void subnet::dropIP(long paramIp) {
+
+};
 
 int subnet::getRangeStart() {
     return this->rangeStart; 
-}
+};
 
 int subnet::getRangeEnd() {
     return this->rangeEnd; 
-}
+};
 
 int subnet::getBroadCast() {
     return this->broadcast;
-}
+};
 
 int subnet::getNetAdress() {
     return this->netAddress;
-}
-
-
+};
 #endif

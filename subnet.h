@@ -43,10 +43,10 @@ class subnet {
 		bool search();	
     
         // IP hinzufügen
-		void addIP(int ip);  
+		void addIP(ipaddress paramIp);  
     
         // IP entfernen
-		void dropIP(int ip); 
+		void dropIP(long paramIp); 
     
         // Netzwerk-Adresse Start abfragen
 		int getRangeStart(); 
