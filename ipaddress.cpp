@@ -1,3 +1,5 @@
+#ifndef subnet_functions
+#define subnet_functions
 // Header für die Klassen einbinden, damit Sie sich selbst kennt.
 #include "ipaddress.h"
 
@@ -13,6 +15,9 @@
 // Nötig für Os X und spart schreiben
 using std::string;
 using std::stringstream;
+
+// Default-Konstruktor
+ipaddress::ipaddress() {}
 
 // Konstruktor für 192.168.XXX.XXX
 ipaddress::ipaddress(
@@ -82,3 +87,4 @@ long int ipaddress::getIPAsLongInt() {
     // Variable zurückgeben
     return output;
 }
+#endif

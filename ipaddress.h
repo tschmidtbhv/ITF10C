@@ -1,3 +1,5 @@
+#ifndef ipaddress_header
+#define ipaddress_header
 /*
 Diese Datei beschreibt alle Methoden und Attribute der Klasse 'ipaddress'
 wenn du fleißig an den Funktionen arbeiten möchtest, dann schau unter
@@ -16,6 +18,9 @@ class ipaddress {
 		int block3;		// Dritter Block (0.)
 		int block4;		// Vierter Block (1)
 	public:
+
+        // Default-Konstruktor
+        ipaddress();
     
         // Konstruktor für 192.168.XXX.XXX 
 		ipaddress(
@@ -37,3 +42,4 @@ class ipaddress {
         // Gibt die IP als Int aus, aus 192.168.0.1 wird 192168000001
 		long int getIPAsLongInt();		
 };
+#endif
