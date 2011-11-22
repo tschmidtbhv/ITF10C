@@ -67,7 +67,12 @@ int main(void) {
         printf("9 : Ende\n");
         printf("Ihre Wahl : ");
         cin << choosenOne;
-        selectedPoint(int choosenOne)
+        if (choosenOne != 9) {
+            selectedPoint(int choosenOne);
+        } else {
+            return;
+        }
+        
     } while (choosenOne != 9);
     
 	return EXIT_SUCCESS;
