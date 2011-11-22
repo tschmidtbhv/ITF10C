@@ -21,8 +21,17 @@ int main(void) {
     delete schinken;
     
         
-    // Benutzereingabe - Anzahl Netze
-    
+    /* Benutzereingabe - Anzahl Netze
+     PSEUDOCODE!
+     vector<subnet> subnetze;
+     for(int i = 0; i < anzahlNetze; i++) {
+        cout << "Größe?" << endl;
+        cout << "Name?" << endl;
+        cout << "Notiz?" << endl;
+        subnetzte.put_back(subnet(größe,name,notiz));
+     }
+    */
+     
     // Array mit der Anzahl von Netzen erzeugen
     
     // Anzahl Clients je Subnetz 
@@ -35,8 +44,18 @@ int main(void) {
     // Beenden 
     
     /*
-     Klasse für die Darstellung von IP-Listen und Subnetzen etc.
-     Quasi vector<ipadressen> rein und dann schön in einer Tabelle ausgeben
+     @Nico-X, wäre das was für dich?
+      
+     !!!Klasse!!! für die Darstellung von IP-Listen und Subnetzen etc.
+     
+     Output->printSubnets(vector<subnet> paramSubnet) 
+     und dann
+     
+     |   Bereich | Name |       Notiz    |
+     -------------------------------------
+     | 0-47      | ET   | Elektrotechnik |
+     Output->printIPsInSubnet(subnet paramSubnet) ...
+     Quasi subnet rein und dann schön in einer Tabelle ausgeben
      
      |       Ip        | Hostnamen   |    Notiz    |
      |-----------------|-------------|-------------|
