@@ -9,10 +9,10 @@
 subnet::subnet() {};
 
 subnet::subnet(
-    int paramnetAddress,
-    int paramrangeStart,
-    int paramrangeEnd,
-    int parambroadcast
+    long paramnetAddress,
+    long paramrangeStart,
+    long paramrangeEnd,
+    long parambroadcast
 )
 {
     this->netAddress = paramnetAddress;
@@ -26,33 +26,39 @@ void subnet::addIP(ipaddress paramipaddress) {
 };
 
 void subnet::dropIP(long paramIp) {
+    // Jedes Element durchgehen bis wir das gefunden haben das wir löschen wollen.
     for(int i = 0; i < this->usedAddresses.size(); i++) 
     {
+        // Wenn wir das zu löschende gefunden haben
         if(this->usedAddresses[i].getLong() == paramIp)
         {
+            // Objekt löschen vom ersten Objekt aus plus der Anzahl an Iterationen
             this->usedAddresses.erase(this->usedAddresses.begin() + i);
+            // Arbeit erledigt, raus aus der Schleife
             break;
         }
     }
 };
 
+// Vector-Objekt mit allen Adressen zurückgeben, für die Darstellung
 vector<ipaddress> subnet::getIPs() {
     return this->usedAddresses;
 }
 
-int subnet::getRangeStart() {
+// Anfang des IP-Bereiches abfragen
+long subnet::getRangeStart() {
     return this->rangeStart; 
 };
 
-int subnet::getRangeEnd() {
+long subnet::getRangeEnd() {
     return this->rangeEnd; 
 };
 
-int subnet::getBroadCast() {
+long subnet::getBroadCast() {
     return this->broadcast;
 };
 
-int subnet::getNetAdress() {
+long subnet::getNetAdress() {
     return this->netAddress;
 };
 #endif

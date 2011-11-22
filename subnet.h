@@ -13,16 +13,16 @@ using namespace std;
 class subnet {
 	private:
         // Broadcast-Adresse
-		int broadcast;		
+		long broadcast;		
     
         // Netz-Adresse
-		int netAddress;	
+		long netAddress;	
 	
         // Adressbereich Anfang
-		int rangeStart;		
+		long rangeStart;		
     
         // Adressbereich Ende
-		int rangeEnd;	
+		long rangeEnd;	
      
         // Array für extra vergebene IP's
         vector<ipaddress> usedAddresses;
@@ -33,10 +33,10 @@ class subnet {
 		subnet();			
     
         // Konstruktor
-		subnet(int paramnetaddress,
-				int paramrangeStart,
-				int paramrangeEnd,
-				int parambroadcast
+		subnet(long paramnetaddress,
+				long paramrangeStart,
+				long paramrangeEnd,
+				long parambroadcast
 		);					 
 
         // Suchfunktion
@@ -52,16 +52,16 @@ class subnet {
 		void dropIP(long paramIp); 
     
         // Netzwerk-Adresse Start abfragen
-		int getRangeStart(); 
+		long getRangeStart(); 
     
         // Netzwerk-Adresse Ende abfragen
-		int getRangeEnd();	 
+		long getRangeEnd();	 
     
         // Broadcast-Adresse abfragen 
-		int getBroadCast();	 
+		long getBroadCast();	 
     
         // Netzwerk-Adresse abfragen
-		int getNetAdress();	 
+		long getNetAdress();	 
     
         // vergebene Adresse im Netz abfragen
 		ipaddress* getAdresses();  
