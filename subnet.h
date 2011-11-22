@@ -45,7 +45,7 @@ class subnet {
 		void addIP(ipaddress paramIp);  
     
         // IP's auflisten
-        vector<ipaddress> showIPs();
+        vector<ipaddress> getIPs();
     
         // IP entfernen
 		void dropIP(long paramIp); 

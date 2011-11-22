@@ -33,6 +33,15 @@ int main(void) {
     // IP-Adresse anzeigen
     // IP-Adresse suchen
     // Beenden 
-        
+    
+    /*
+     Klasse für die Darstellung von IP-Listen und Subnetzen etc.
+     Quasi vector<ipadressen> rein und dann schön in einer Tabelle ausgeben
+     
+     |       Ip        | Hostnamen |
+     |-----------------|-----------|
+     | 192.168.000.001 | Celsius   |
+    */
+    
 	return EXIT_SUCCESS;
 }

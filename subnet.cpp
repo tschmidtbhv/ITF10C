@@ -29,7 +29,7 @@ void subnet::dropIP(long paramIp) {
 
 };
 
-vector<ipaddress> subnet::showIPs() {
+vector<ipaddress> subnet::getIPs() {
 
 }
 
