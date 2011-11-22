@@ -1,6 +1,7 @@
 // Standard-Includes sonst wird hier gar nichts
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 using std::string;
 
@@ -9,11 +10,16 @@ using std::string;
 #include "subnet.h"
 
 int main(void) {
-	ipaddress* schinken = new ipaddress(0, 1);
-	cout << schinken->getIPAsString() << endl;
-    cout << schinken->getIPAsLong() << endl;
+	
+    ipaddress* schinken = new ipaddress(0, 1);
+	cout << schinken->getString() << endl;
+    cout << schinken->getLong() << endl;
     
 	subnet* kaese = new subnet();
+     
+    delete kaese;
+    delete schinken;
+    
         
     // Benutzereingabe - Anzahl Netze
     
@@ -28,8 +34,5 @@ int main(void) {
     // IP-Adresse suchen
     // Beenden 
         
-	delete kaese;
-	delete schinken;
-
 	return EXIT_SUCCESS;
 }

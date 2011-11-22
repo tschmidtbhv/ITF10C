@@ -6,7 +6,7 @@
 #include "ipaddress.h"
 
 // Konstruktor
-subnet::subnet(){}
+subnet::subnet() {};
 
 subnet::subnet(
     int paramnetAddress,
@@ -19,19 +19,19 @@ subnet::subnet(
     this->rangeStart = paramrangeStart;
     this->rangeEnd = paramrangeEnd;
     this->broadcast = parambroadcast;
-    this->usedAddressesCount = 0;
 };
 
 void subnet::addIP(ipaddress paramipaddress) {
-    this->usedAddressesCount++;
-    this->usedAddresses = new ipaddress[this->usedAddressesCount];
-    
-    
+    this->usedAddresses.push_back(paramipaddress);
 };
 
 void subnet::dropIP(long paramIp) {
 
 };
+
+vector<ipaddress> subnet::showIPs() {
+
+}
 
 int subnet::getRangeStart() {
     return this->rangeStart; 

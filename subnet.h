@@ -7,6 +7,8 @@
 
 // Header einbinden um ipaddress nutzen zu können
 #include "ipaddress.h"
+#include <vector>
+using namespace std;
 
 class subnet {
 	private:
@@ -21,12 +23,9 @@ class subnet {
     
         // Adressbereich Ende
 		int rangeEnd;	
-	
-        // Anzahl vergebener IP's
-        int usedAddressesCount;   
-    
+     
         // Array für extra vergebene IP's
-        ipaddress* usedAddresses;
+        vector<ipaddress> usedAddresses;
     
 	public:
         // Default-Konstruktor (muss vorhanden sein)
@@ -44,6 +43,9 @@ class subnet {
     
         // IP hinzufügen
 		void addIP(ipaddress paramIp);  
+    
+        // IP's auflisten
+        vector<ipaddress> showIPs();
     
         // IP entfernen
 		void dropIP(long paramIp); 

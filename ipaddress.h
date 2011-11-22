@@ -44,9 +44,9 @@ class ipaddress {
 		);
     
         // Gibt die IP als formatieren String in folgendem Format aus XXX.XXX.XXX.XXX
-		string getIPAsString();	
+		string getString();	
 	
         // Gibt die IP als Int aus, aus 192.168.0.1 wird 192168000001
-		long getIPAsLong();		
+		long getLong();		
 };
 #endif

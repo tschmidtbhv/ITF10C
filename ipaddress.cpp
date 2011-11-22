@@ -47,7 +47,7 @@ ipaddress::ipaddress(
 };
 
 // Ip-Adresse als String abfragen
-string ipaddress::getIPAsString() {
+string ipaddress::getString() {
 
     // Stringstream für die Konvertierung anlegen
     stringstream output;
@@ -63,7 +63,7 @@ string ipaddress::getIPAsString() {
 };
 
 // Ip-Adresse als Integer abfragen
-long int ipaddress::getIPAsLong() {
+long int ipaddress::getLong() {
     
     /*
      Beispiel:
