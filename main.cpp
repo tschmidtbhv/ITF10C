@@ -35,7 +35,7 @@ int main(void) {
     
     // Subnetze anzeigen
     // Subnetz hinzufügen
-    // Hostnamen zu IP-Adresse ablegen
+    // Hostnamen zu IP-Adresse ablegen (Auch eine Notiz dazu)
     // IP-Adresse anzeigen
     // IP-Adresse suchen
     // Beenden 
@@ -44,9 +44,17 @@ int main(void) {
      Klasse für die Darstellung von IP-Listen und Subnetzen etc.
      Quasi vector<ipadressen> rein und dann schön in einer Tabelle ausgeben
      
-     |       Ip        | Hostnamen |
-     |-----------------|-----------|
-     | 192.168.000.001 | Celsius   |
+     |       Ip        | Hostnamen   |    Notiz    |
+     |-----------------|-------------|-------------|
+     | 192.168.000.000 | Netzadresse | -  
+     | 192.168.000.001 | Celsius     | Deine Mudda |
+     | 192.168.000.002 | #########   | ########### | 
+     ....
+     | 192.168.000.47  | Broadcast   | ping -b :D  |
+    */
+    
+    /*
+     Optional anbindung an SQLite um Subnetz-Daten zu speichern und später wieder zu laden. 
     */
     
     // 

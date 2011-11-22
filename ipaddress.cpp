@@ -63,7 +63,7 @@ string ipaddress::getString() {
 };
 
 // Ip-Adresse als Integer abfragen
-long int ipaddress::getLong() {
+long ipaddress::getLong() {
     
     /*
      Beispiel:
