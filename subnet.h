@@ -39,8 +39,11 @@ class subnet {
 				long parambroadcast
 		);					 
 
-        // Suchfunktion
-		bool search();	
+        // Suchfunktion ob im Subnetz
+		bool searchValid(ipaddress paramIp);	
+    
+        // Suchfunktion ob im Subnetz vergeben
+        bool searchExists(ipaddress paramIp);
     
         // IP hinzufügen
 		void addIP(ipaddress paramIp);  
@@ -49,7 +52,7 @@ class subnet {
         vector<ipaddress> getIPs();
     
         // IP entfernen
-		void dropIP(long paramIp); 
+		void dropIP(ipaddress paramIp); 
     
         // Netzwerk-Adresse Start abfragen
 		long getRangeStart(); 

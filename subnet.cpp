@@ -25,12 +25,12 @@ void subnet::addIP(ipaddress paramipaddress) {
     this->usedAddresses.push_back(paramipaddress);
 };
 
-void subnet::dropIP(long paramIp) {
+void subnet::dropIP(ipaddress paramIp) {
     // Jedes Element durchgehen bis wir das gefunden haben das wir löschen wollen.
     for(int i = 0; i < this->usedAddresses.size(); i++) 
     {
         // Wenn wir das zu löschende gefunden haben
-        if(this->usedAddresses[i].getLong() == paramIp)
+        if(this->usedAddresses[i].getLong() == paramIp.getLong())
         {
             // Objekt löschen vom ersten Objekt aus plus der Anzahl an Iterationen
             this->usedAddresses.erase(this->usedAddresses.begin() + i);
@@ -39,6 +39,19 @@ void subnet::dropIP(long paramIp) {
         }
     }
 };
+
+// Sucht ob eine IP in ein Subnetz gehört
+bool subnet::searchValid(ipaddress paramIp) {
+    
+    
+    return false;
+}
+
+// Sucht ob die IP im Subnetz vergeben ist
+bool subnet::searchExists(ipaddress paramIp) {
+
+    return false;
+}
 
 // Vector-Objekt mit allen Adressen zurückgeben, für die Darstellung
 vector<ipaddress> subnet::getIPs() {
