@@ -35,5 +35,5 @@ class ipaddress {
 		string getIPAsString();	
 	
         // Gibt die IP als Int aus, aus 192.168.0.1 wird 192168000001
-		int	getIPAsInt();		
+		long int getIPAsLongInt();		
 };

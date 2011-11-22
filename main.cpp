@@ -11,7 +11,7 @@ using std::string;
 int main(void) {
 	ipaddress* schinken = new ipaddress(0, 1);
 	cout << schinken->getIPAsString() << endl;
-    cout << schinken->getIPAsInt() << endl;
+    cout << schinken->getIPAsLongInt() << endl;
     
 	subnet* kaese = new subnet();
 

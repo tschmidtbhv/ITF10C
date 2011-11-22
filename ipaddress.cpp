@@ -7,6 +7,9 @@
 // Header um Konvertierung von Int zu String zu ermöglichen
 #include <sstream>
 
+// Header für Pow-Funktion, also Rechnen mit Potenzen
+#include <math.h>
+
 // Nötig für Os X und spart schreiben
 using std::string;
 using std::stringstream;
@@ -40,6 +43,7 @@ ipaddress::ipaddress(
     this->block4 = paramblock4;
 }
 
+// Ip-Adresse als String abfragen
 string ipaddress::getIPAsString() {
 
     // Stringstream für die Konvertierung anlegen
@@ -55,24 +59,25 @@ string ipaddress::getIPAsString() {
     return output.str();
 }
 
-int ipaddress::getIPAsInt() {
+// Ip-Adresse als Integer abfragen
+long int ipaddress::getIPAsLongInt() {
     
     /*
      Beispiel:
      192168000001
-     192.........
-        168......
-           000...
-              001
+     192......... (also 10^9)
+        168...... (also 10^6)
+           000... (also 10^3)
+              001 (also nichts weiter) 
     */
     
     // Variable anlegen
-    int output = 0;
+    long int output = 0;
     
-    output = output + this->block1 * 10^9;
-    output = output + this->block2 * 10^6;
-    output = output + this->block3 * 10^3;
-    output = output + this->block4;
+    output += this->block1 * pow(10,9);
+    output += this->block2 * pow(10,6);
+    output += this->block3 * pow(10,3);
+    output += this->block4;
     
     // Variable zurückgeben
     return output;
