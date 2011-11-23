@@ -14,14 +14,13 @@ int ipBlock1, ipBlock2,ipBlock3, ipBlock4;
 
 void selectedPoint(int choosenOne);
 long splitAndConvert(string paramIPAddress);
-void createSubnet();
+void createSubnets();
 int nextExpToTwo(int input);
 
 int main(void) {
-    createSubnet();
-    //cout << splitAndConvert("192.168.0.1") << endl;
-    return EXIT_SUCCESS;
+    createSubnets();
     
+    return EXIT_SUCCESS;    
 } 
 
 
@@ -36,7 +35,7 @@ void selectedPoint(int choosenOne) {
     
     switch (choosenOne) {
         case 1:
-            createSubnet();
+            createSubnets();
             break;
             
         case 2:
@@ -55,32 +54,45 @@ void selectedPoint(int choosenOne) {
 }
 
 
-void createSubnet() {
-    cout << " Wieviele Subnetze möchten Sie anlegen?";
+void createSubnets() {
+    cout << " Wieviele Subnetze möchten Sie anlegen? ";
     
     int networkCount = 0;
-    scanf ("%d",&networkCount);
-    
+    do {
+        scanf ("%d",&networkCount);
+        cin.ignore();
+        if(networkCount <= 0 || networkCount >= 11) {
+            cout << "Bitte wählen Sie eine Zahl im Bereich von 1 bis 10." << endl;
+        }
+    } while(networkCount <= 0 || networkCount >= 11);
+
     vector<subnet> usedSubnets;
     for(int i = 0; i < networkCount; i++) {
         cout << "Subnetz " << (i+1) << ":" << endl;
         
-        cout << "Name? ";
         string name = "";
-        cin.ignore();
-        getline(cin,name);
+        string description = "";
+        int networkSize = 0;
+
+        do {
+            cout << "Name? ";
+            getline(cin,name);
+        } while(name == "");
         
         
         cout << "Beschreibung? ";
-        string description = "";
-        cin.ignore();
         getline(cin,description);
-        
-        
-        cout << "Größe? ";
-        int networkSize = 0;
-        scanf("%d",&networkSize);
+                
+        do {
+            cout << "Größe? ";
+            scanf("%d",&networkSize);
+            cin.ignore();
+            if(networkSize <= 0 || networkSize >= 256) {
+                cout << "Diese Größe ist nicht zulässig, wählen Sie eine Größe zwischen 0 und 256." << endl;
+            }
+        } while(networkSize <= 0 || networkSize >= 256);
         cout << endl;
+
         
         //Das erste Subnetz wird erstellt
         if (i == 0) {
@@ -116,7 +128,7 @@ void createSubnet() {
                                     max_broadcast+1,
                                     max_broadcast+2,
                                     max_broadcast+(nextExpToTwo(networkSize)-1),
-                                    max_broadcast+nextExpToTwo(networkSize),
+                                    max_broadcast+(nextExpToTwo(networkSize)),
                                     name,
                                     description)
                                 );
