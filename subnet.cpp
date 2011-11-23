@@ -17,7 +17,7 @@ subnet::subnet(
     long paramrangeEnd,
     long parambroadcast,
     string paramName,
-    string paramNotice = ""
+    string paramNotice
 )
 {
     this->netAddress = paramnetAddress;

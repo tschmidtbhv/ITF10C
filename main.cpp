@@ -15,7 +15,42 @@ void splitAndConvert();
 
 
 int main(void) {
+    
+    cout << "     Das super Subnet-Tool" << endl;
+    cout << "      ein tolles Programm" << endl;
+    cout << "         Version 1.0" << endl << endl;
+    
+    cout << " Wieviele Subnetze möchten Sie anlegen?";
+    
+    int networkCount = 0;
+    scanf ("%d",&networkCount);
+    
+    /*
+        Fehleingaben-Handling?
+    */
+    vector<subnet> usedSubnets;
+    for(int i = 0; i < networkCount; i++) {
+        cout << "Subnetz " << (i+1) << ":" << endl;
+        cout << "Name? " << endl;
+        string name = "";
+        cin >> name;
+        cout << "Beschreibung? " << endl;
+        string notice = "";
+        cin >> notice;
+        cout << "Größe? " << endl;
+        int networkSize = 0;
+        scanf("%d",&networkSize);
+        
+        /*
+         Viele tolle Berechnungen von Broadcast,
+         Netzadresse, Start und Ende des Range.
+         
+         Dann objekt hinzufügen:
+         usedSubnets.push_back(subnet(0,0,0,0,name,notice));
+         */
+    }
 	
+    /*
     ipaddress* schinken = new ipaddress(0, 1);
 	cout << schinken->getString() << endl;
     cout << schinken->getLong() << endl;
@@ -24,8 +59,10 @@ int main(void) {
      
     delete kaese;
     delete schinken;
+     */
     
-        
+    
+    
     /* Benutzereingabe - Anzahl Netze
      PSEUDOCODE!
      vector<subnet> subnetze;

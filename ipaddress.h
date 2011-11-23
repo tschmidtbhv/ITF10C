@@ -49,6 +49,9 @@ class ipaddress {
 			int paramblock4
 		);
     
+        // Destruktor 
+        ~ipaddress();
+    
         // Gibt die IP als formatieren String in folgendem Format aus XXX.XXX.XXX.XXX
 		string getString();	
 	

@@ -47,6 +47,10 @@ ipaddress::ipaddress(
     this->notice = "";
 };
 
+
+// Destrukor
+ipaddress::~ipaddress() {};
+
 /**
  * IP-Adresse als String abfragen
  * 
