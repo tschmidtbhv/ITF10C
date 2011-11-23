@@ -8,8 +8,7 @@ wenn du fleißig an den Funktionen arbeiten möchtest, dann schau unter
 
 /* Einbinden der Header für den String-Datentyp */
 #include <string>
-/* Using std::string wichtig bei Os X */
-using std::string;
+using namespace std;
 
 class ipaddress {
 	private:

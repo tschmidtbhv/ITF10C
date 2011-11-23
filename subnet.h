@@ -12,6 +12,13 @@ using namespace std;
 
 class subnet {
 	private:
+        // Größe der Benutzereingabe
+        // ???? int realSize;
+        // bsp: 28;
+        // Größe in der Kalkulation
+        // ??? int virtualSize;
+        // bsp: 28 -> 32;
+        
         // Broadcast-Adresse
 		long broadcast;		
     
@@ -24,6 +31,12 @@ class subnet {
         // Adressbereich Ende
 		long rangeEnd;	
      
+        // Name für das Subnetz
+        string name;
+    
+        // Notiz zum Subnetz
+        string notice;
+    
         // Array für extra vergebene IP's
         vector<ipaddress> usedAddresses;
         vector<ipaddress>::iterator i;
@@ -36,7 +49,9 @@ class subnet {
 		subnet(long paramnetaddress,
 				long paramrangeStart,
 				long paramrangeEnd,
-				long parambroadcast
+				long parambroadcast,
+                string paramName,
+                string paramNotice = ""
 		);					 
 
         // Suchfunktion ob im Subnetz
@@ -49,7 +64,7 @@ class subnet {
 		void addIP(ipaddress paramIp);  
     
         // IP's auflisten
-        vector<ipaddress> getIPs();
+        vector<ipaddress> getAddresses();
     
         // IP entfernen
 		void dropIP(ipaddress paramIp); 
@@ -64,9 +79,6 @@ class subnet {
 		long getBroadCast();	 
     
         // Netzwerk-Adresse abfragen
-		long getNetAdress();	 
-    
-        // vergebene Adresse im Netz abfragen
-		ipaddress* getAdresses();  
+		long getNetAdress();
 };
 #endif

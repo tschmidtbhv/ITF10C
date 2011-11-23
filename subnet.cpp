@@ -4,6 +4,8 @@
 // Header für die Klassen einbinden, damit Sie sich selbst kennt.
 #include "subnet.h"
 #include "ipaddress.h"
+#include <string>
+using namespace std;
 
 // Konstruktor
 subnet::subnet() {};
@@ -12,13 +14,17 @@ subnet::subnet(
     long paramnetAddress,
     long paramrangeStart,
     long paramrangeEnd,
-    long parambroadcast
+    long parambroadcast,
+    string paramName,
+    string paramNotice
 )
 {
     this->netAddress = paramnetAddress;
     this->rangeStart = paramrangeStart;
     this->rangeEnd = paramrangeEnd;
     this->broadcast = parambroadcast;
+    this->name = paramName;
+    this->notice = paramNotice;
 };
 
 void subnet::addIP(ipaddress paramipaddress) {
@@ -68,7 +74,7 @@ bool subnet::searchExists(ipaddress paramIp) {
 }
 
 // Vector-Objekt mit allen Adressen zurückgeben, für die Darstellung
-vector<ipaddress> subnet::getIPs() {
+vector<ipaddress> subnet::getAddresses() {
     return this->usedAddresses;
 }
 

@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 using namespace std;
-using std::string;
 
 // Klassen einbinden damit wir diese instanzieren können
 #include "ipaddress.h"

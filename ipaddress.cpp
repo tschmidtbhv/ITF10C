@@ -3,9 +3,6 @@
 // Header für die Klassen einbinden, damit Sie sich selbst kennt.
 #include "ipaddress.h"
 
-// Header für String
-#include <string>
-
 // Header um Konvertierung von Int zu String zu ermöglichen
 #include <sstream>
 
@@ -13,8 +10,7 @@
 #include <math.h>
 
 // Nötig für Os X und spart schreiben
-using std::string;
-using std::stringstream;
+using namespace std;
 
 // Default-Konstruktor
 ipaddress::ipaddress() {};
