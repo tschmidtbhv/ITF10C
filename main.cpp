@@ -80,6 +80,7 @@ void createSubnet() {
         cout << "Größe? ";
         int networkSize = 0;
         scanf("%d",&networkSize);
+        cout << endl;
         
         //Das erste Subnetz wird erstellt
         if (i == 0) {
@@ -91,12 +92,14 @@ void createSubnet() {
               In der offiziellen Aufgabe ist es AFAIK ein /25 
             */
             
-            usedSubnets[i] = subnet(splitAndConvert("192.168.0.1"),
+            usedSubnets.push_back(
+                                  subnet(splitAndConvert("192.168.0.1"),
                                     (splitAndConvert("192.168.0.1")+1),
                                     (splitAndConvert("192.168.0.1")+nextExpToTwo(networkSize)-1),
                                     (splitAndConvert("192.168.0.1")+nextExpToTwo(networkSize)),
                                     name,
-                                    description);
+                                    description)
+                                );
         } else {
             
             /* @Thomas, bitte nochmal drüber schauen ob das hier alles so Sinn macht */
@@ -108,13 +111,15 @@ void createSubnet() {
                 }
             }
             
-            usedSubnets[i] = subnet(
+            usedSubnets.push_back(
+                                  subnet(
                                     max_broadcast+1,
                                     max_broadcast+2,
                                     max_broadcast+(nextExpToTwo(networkSize)-1),
                                     max_broadcast+nextExpToTwo(networkSize),
                                     name,
-                                    description);
+                                    description)
+                                );
             
         }
         /*
