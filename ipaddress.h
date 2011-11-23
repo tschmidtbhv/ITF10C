@@ -23,7 +23,14 @@ class ipaddress {
 		int block3;		
     
         // Vierter Block (1)
-		int block4;		
+		int block4;	
+	
+        // Hostnamen zur IP speichern
+        string hostname;
+    
+        // Notiz zur IP speichern
+        string notice;
+    
 	public:
 
         // Default-Konstruktor
@@ -48,5 +55,17 @@ class ipaddress {
 	
         // Gibt die IP als Int aus, aus 192.168.0.1 wird 192168000001
 		long getLong();		
+    
+        // Hostnamen abfragen
+        string getHostname();
+    
+        // Notiz abfragen
+        string getNotice();
+    
+        // Hostnamen ändern
+        void setHostname(string paramValue);
+    
+        // Notiz ändern
+        void setNotice(string paramValue);
 };
 #endif

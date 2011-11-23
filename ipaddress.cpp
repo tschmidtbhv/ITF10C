@@ -29,6 +29,8 @@ ipaddress::ipaddress(
     this->block2 = 168;
     this->block3 = paramblock3;
     this->block4 = paramblock4;
+    this->hostname = "";
+    this->notice = "";
 };
 
 
@@ -44,6 +46,8 @@ ipaddress::ipaddress(
     this->block2 = 168;
     this->block3 = paramblock3;
     this->block4 = paramblock4;
+    this->hostname = "";
+    this->notice = "";
 };
 
 // Ip-Adresse als String abfragen
@@ -85,4 +89,20 @@ long ipaddress::getLong() {
     // Variable zurückgeben
     return output;
 };
+
+string ipaddress::getHostname() {
+    return this->hostname;
+}
+
+string ipaddress::getNotice() {
+    return this->notice;
+}
+
+void ipaddress::setNotice(string paramValue) {
+    this->notice = paramValue;
+}
+
+void ipaddress::setHostname(string paramValue) {
+    this->hostname = paramValue;
+}
 #endif

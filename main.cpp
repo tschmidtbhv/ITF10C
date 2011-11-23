@@ -60,6 +60,7 @@ int main(void) {
      |   Bereich | Name |       Notiz    |
      -------------------------------------
      | 0-47      | ET   | Elektrotechnik |
+     
      Output->printIPsInSubnet(subnet paramSubnet) ...
      Quasi subnet rein und dann schön in einer Tabelle ausgeben
      
@@ -73,10 +74,12 @@ int main(void) {
     */
     
     /*
-     Optional anbindung an SQLite um Subnetz-Daten zu speichern und später wieder zu laden. 
+     Optional anbindung an SQLite um Subnetz-Daten zu speichern und später wieder zu laden.
     */
     
     // 
+    
+    /*
     int choosenOne;
     
     do {
@@ -92,10 +95,10 @@ int main(void) {
             return;
         }
         
-    } while (choosenOne != 9);
+    } while (choosenOne != 9); */
     
 	return EXIT_SUCCESS;
-}
+} 
 
 
 /*
