@@ -2,21 +2,22 @@
 #define subnet_functions
 
 // Header für die Klassen einbinden, damit Sie sich selbst kennt.
+#include <string>
 #include "subnet.h"
 #include "ipaddress.h"
-#include <string>
 using namespace std;
 
-// Konstruktor
+// Default-Konstruktor
 subnet::subnet() {};
 
+// Konstruktor mit den wichtigen Parametern
 subnet::subnet(
     long paramnetAddress,
     long paramrangeStart,
     long paramrangeEnd,
     long parambroadcast,
     string paramName,
-    string paramNotice
+    string paramNotice = ""
 )
 {
     this->netAddress = paramnetAddress;
@@ -27,6 +28,14 @@ subnet::subnet(
     this->notice = paramNotice;
 };
 
+// Destruktor 
+subnet::~subnet() {}
+
+/**
+ * IP-Adresse hinzufügen
+ *
+ * @param ipadress paramipaddress
+ */
 void subnet::addIP(ipaddress paramipaddress) {
     this->usedAddresses.push_back(paramipaddress);
 };

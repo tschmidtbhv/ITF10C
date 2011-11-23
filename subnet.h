@@ -2,7 +2,8 @@
 #define subnet_header
 /*
  Diese Datei beschreibt alle Methoden und Attribute der Klasse 'subnet'
- wenn du fleißig an den Funktionen arbeiten möchtest, dann schau unter <subnet.cpp>
+ wenn du fleißig an den Funktionen arbeiten möchtest,
+ dann schau unter <subnet.cpp>
  */
 
 // Header einbinden um ipaddress nutzen zu können
@@ -20,8 +21,9 @@ class subnet {
          ??? int virtualSize;
          bsp: 28 -> 32; 
          
-         Brauchen wir das, macht das Sinn? Dann klickt bitte auf Daumen hoch neben diesem Kommentar. xD 
-         */
+         Brauchen wir das, macht das Sinn? 
+         Dann klickt bitte auf Daumen hoch neben ndiesem Kommentar. xD 
+        */
         
         // Broadcast-Adresse
 		long broadcast;		
@@ -55,8 +57,12 @@ class subnet {
 				long paramrangeEnd,
 				long parambroadcast,
                 string paramName,
-                string paramNotice = ""
-		);					 
+                string paramNotice
+		);	
+    
+        
+        // Destruktor
+        ~subnet();
 
         // Suchfunktion ob im Subnetz
 		bool searchValid(ipaddress paramIp);	

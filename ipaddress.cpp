@@ -1,13 +1,14 @@
 #ifndef subnet_functions
 #define subnet_functions
-// Header für die Klassen einbinden, damit Sie sich selbst kennt.
-#include "ipaddress.h"
 
 // Header um Konvertierung von Int zu String zu ermöglichen
 #include <sstream>
 
 // Header für Pow-Funktion, also Rechnen mit Potenzen
 #include <math.h>
+
+// Header für die Klassen einbinden, damit Sie sich selbst kennt.
+#include "ipaddress.h"
 
 // Nötig für Os X und spart schreiben
 using namespace std;

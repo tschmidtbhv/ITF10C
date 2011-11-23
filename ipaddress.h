@@ -1,9 +1,9 @@
 #ifndef ipaddress_header
 #define ipaddress_header
 /*
-Diese Datei beschreibt alle Methoden und Attribute der Klasse 'ipaddress'
-wenn du fleißig an den Funktionen arbeiten möchtest, dann schau unter
-<ipaddress.cpp>
+ Diese Datei beschreibt alle Methoden und Attribute der Klasse 'ipaddress'
+ wenn du fleißig an den Funktionen arbeiten möchtest,
+ dann schau unter <ipaddress.cpp>
 */
 
 /* Einbinden der Header für den String-Datentyp */
