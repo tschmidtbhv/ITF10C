@@ -1,5 +1,6 @@
-#ifndef output_header
-#define output_header
+#ifndef output_functions
+#define output_functions
+
 // Header für IO einbinden
 #include <iostream>
 #include <string>
@@ -9,5 +10,7 @@ using namespace std;
 // Header für Klassen einbinden
 #include "ipaddress.h"
 #include "subnet.h"
+
+
 
 #endif

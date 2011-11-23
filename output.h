@@ -6,5 +6,9 @@
  dann schau unter <output.cpp>
  */
 
+class output {
+    public:
+    private:
+};
 
 #endif

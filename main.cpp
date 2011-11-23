@@ -31,13 +31,13 @@ int main(void) {
     vector<subnet> usedSubnets;
     for(int i = 0; i < networkCount; i++) {
         cout << "Subnetz " << (i+1) << ":" << endl;
-        cout << "Name? " << endl;
+        cout << "Name? ";
         string name = "";
         cin >> name;
-        cout << "Beschreibung? " << endl;
+        cout << "Beschreibung? ";
         string notice = "";
         cin >> notice;
-        cout << "Größe? " << endl;
+        cout << "Größe? ";
         int networkSize = 0;
         scanf("%d",&networkSize);
         
