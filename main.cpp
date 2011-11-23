@@ -1,7 +1,9 @@
 // Standard-Includes sonst wird hier gar nichts
 #include <iostream>
+#include <cstdio>
 #include <string>
 #include <vector>
+#include <math.h>
 using namespace std;
 
 // Klassen einbinden damit wir diese instanzieren können
@@ -11,129 +13,14 @@ using namespace std;
 int ipBlock1, ipBlock2,ipBlock3, ipBlock4;
 
 void selectedPoint(int choosenOne);
-void splitAndConvert();
-
+long splitAndConvert(string paramIPAddress);
+s
 
 int main(void) {
     
-    cout << "     Das super Subnet-Tool" << endl;
-    cout << "      ein tolles Programm" << endl;
-    cout << "         Version 1.0" << endl << endl;
-    
-    cout << " Wieviele Subnetze möchten Sie anlegen?";
-    
-    int networkCount = 0;
-    scanf ("%d",&networkCount);
-    
-    /*
-        Fehleingaben-Handling?
-    */
-    vector<subnet> usedSubnets;
-    for(int i = 0; i < networkCount; i++) {
-        cout << "Subnetz " << (i+1) << ":" << endl;
-        cout << "Name? ";
-        string name = "";
-        cin >> name;
-        cout << "Beschreibung? ";
-        string notice = "";
-        cin >> notice;
-        cout << "Größe? ";
-        int networkSize = 0;
-        scanf("%d",&networkSize);
-        
-        /*
-         Viele tolle Berechnungen von Broadcast,
-         Netzadresse, Start und Ende des Range.
-         
-         Dann objekt hinzufügen:
-         usedSubnets.push_back(subnet(0,0,0,0,name,notice));
-         */
-    }
-	
-    /*
-    ipaddress* schinken = new ipaddress(0, 1);
-	cout << schinken->getString() << endl;
-    cout << schinken->getLong() << endl;
-    
-	subnet* kaese = new subnet();
-     
-    delete kaese;
-    delete schinken;
-     */
-    
-    
-    
-    /* Benutzereingabe - Anzahl Netze
-     PSEUDOCODE!
-     vector<subnet> subnetze;
-     for(int i = 0; i < anzahlNetze; i++) {
-        cout << "Größe?" << endl;
-        cout << "Name?" << endl;
-        cout << "Notiz?" << endl;
-        subnetzte.put_back(subnet(größe,name,notiz));
-     }
-    */
-     
-    // Array mit der Anzahl von Netzen erzeugen
-    
-    // Anzahl Clients je Subnetz 
-    
-    // Subnetze anzeigen
-    // Subnetz hinzufügen
-    // Hostnamen zu IP-Adresse ablegen (Auch eine Notiz dazu)
-    // IP-Adresse anzeigen
-    // IP-Adresse suchen
-    // Beenden 
-    
-    /*
-     @Nico-X, wäre das was für dich?
-      
-     !!!Klasse!!! für die Darstellung von IP-Listen und Subnetzen etc.
-     
-     Output->printSubnets(vector<subnet> paramSubnet) 
-     und dann
-     
-     |   Bereich | Name |       Notiz    |
-     -------------------------------------
-     | 0-47      | ET   | Elektrotechnik |
-     
-     Output->printIPsInSubnet(subnet paramSubnet) ...
-     Quasi subnet rein und dann schön in einer Tabelle ausgeben
-     
-     |       Ip        | Hostnamen   |    Notiz    |
-     |-----------------|-------------|-------------|
-     | 192.168.000.000 | Netzadresse | -  
-     | 192.168.000.001 | Celsius     | Deine Mudda |
-     | 192.168.000.002 | #########   | ########### | 
-     ....
-     | 192.168.000.47  | Broadcast   | ping -b :D  |
-    */
-    
-    /*
-     Optional anbindung an SQLite um Subnetz-Daten zu speichern und später wieder zu laden.
-    */
-    
-    // 
-    
-    /*
-    int choosenOne;
-    
-    do {
-        printf("\n1 : Subnetz erstellen\n");
-        printf("2 : IP einfügen\n");
-        printf("3 : IP löschen\n");
-        printf("9 : Ende\n");
-        printf("Ihre Wahl : ");
-        cin << choosenOne;
-        if (choosenOne != 9) {
-            selectedPoint(int choosenOne);
-        } else {
-            return;
-        }
-        
-    } while (choosenOne != 9); */
-    
-	return EXIT_SUCCESS;
+    cout << splitAndConvert("192.168.0.1") << endl;
+    return EXIT_SUCCESS;
+  
 } 
 
 
@@ -143,7 +30,6 @@ int main(void) {
  * @params int choosenOne  
  *
  */
-
 void selectedPoint(int choosenOne) {
     
     
@@ -153,7 +39,7 @@ void selectedPoint(int choosenOne) {
             break;
             
         case 2:
-            splitAndConvert();
+            //splitAndConvert();
             break;
             
         case 3:
@@ -174,32 +60,31 @@ void selectedPoint(int choosenOne) {
  * 
  * @return void
  */
-void splitAndConvert() {
+long splitAndConvert(string paramIPAddress) {
     
-    char ipAdress[16];
-    cin >> ipAdress;
-    char* ipToken = strtok(ipAdress, "...");
+    long output = 0;
+    int iteration = 0;
+    char* IPAddress =  strdup(paramIPAddress.c_str());
+    char* pch = strtok(IPAddress, ".");
     
-    if (ipToken)
-    {
-        ipBlock1 = atoi(ipToken);
-        
-        for (int i = 0; i < 4; i++) {
-            switch (i) {
-                case 1:
-                    ipBlock2 =  atoi(strtok(NULL, "..."));
-                    break;
-                case 2:
-                    ipBlock3 =  atoi(strtok(NULL, "..."));
-                    break;
-                case 3:
-                    ipBlock4 =  atoi(strtok(NULL, "..."));
-                    break;
-                    
-                default:
-                    break;
-            }
+    while(pch != NULL) {
+        switch(iteration) {
+            case 0:
+                output += atoi(pch) * pow(10,9);
+                break;
+            case 1:
+                output += atoi(pch) * pow(10,6);
+                break;
+            case 2:
+                output += atoi(pch) * pow(10,3);
+                break;
+            case 3:
+                output += atoi(pch);
+                break;
         }
-        
+        pch = strtok (NULL, ".");
+        iteration++;
     }
+    
+    return output;
 }
