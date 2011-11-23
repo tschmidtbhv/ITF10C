@@ -14,14 +14,14 @@ int ipBlock1, ipBlock2,ipBlock3, ipBlock4;
 
 void selectedPoint(int choosenOne);
 long splitAndConvert(string paramIPAddress);
+void createSubnet();
 int nextExpToTwo(int input);
 
-
 int main(void) {
-    
-    cout << nextExpToTwo(0) << endl;
+    createSubnet();
+    //cout << splitAndConvert("192.168.0.1") << endl;
     return EXIT_SUCCESS;
-  
+    
 } 
 
 
@@ -36,7 +36,7 @@ void selectedPoint(int choosenOne) {
     
     switch (choosenOne) {
         case 1:
-            //createSubnet();
+            createSubnet();
             break;
             
         case 2:
@@ -51,9 +51,61 @@ void selectedPoint(int choosenOne) {
             cout << "Sie haben eine falsche Nummer eingegeben!";
             break;
     }
-
+    
 }
 
+
+void createSubnet() {
+    cout << " Wieviele Subnetze möchten Sie anlegen?";
+    
+    int networkCount = 0;
+    scanf ("%d",&networkCount);
+    
+    vector<subnet> usedSubnets;
+    for(int i = 0; i < networkCount; i++) {
+        cout << "Subnetz " << (i+1) << ":" << endl;
+        
+        cout << "Name? ";
+        string name = "";
+        cin.ignore();
+        getline(cin,name);
+        
+        
+        cout << "Beschreibung? ";
+        string description = "";
+        cin.ignore();
+        getline(cin,description);
+        
+        
+        cout << "Größe? ";
+        int networkSize = 0;
+        scanf("%d",&networkSize);
+        
+        //Das erste Subnetz wird erstellt
+        if (i == 0) {
+            
+            
+            usedSubnets[i] = subnet(splitAndConvert("192.168.0.1"),
+                                    (splitAndConvert("192.168.0.1")+1),
+                                    (splitAndConvert("192.168.0.1")+nextExpToTwo(networkSize)-1),
+                                    (splitAndConvert("192.168.0.1")+nextExpToTwo(networkSize)),
+                                    name,
+                                    description);
+        } else {
+            for (int i = 0; i< usedSubnets.size(); i++) {
+                
+            }
+            
+        }
+        /*
+         Viele tolle Berechnungen von Broadcast,
+         Netzadresse, Start und Ende des Range.
+         
+         Dann objekt hinzufügen:
+         usedSubnets.push_back(subnet(0,0,0,0,name,notice));
+         */
+    }
+}
 
 /*
  * splitAndConvert
