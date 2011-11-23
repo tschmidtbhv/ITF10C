@@ -98,6 +98,9 @@ void createSubnet() {
                                     name,
                                     description);
         } else {
+            
+            /* @Thomas, bitte nochmal drüber schauen ob das hier alles so Sinn macht */
+            
             long max_broadcast = 0;
             for (int i = 0; i< usedSubnets.size(); i++) {
                 if( usedSubnets[i].getBroadCast() > max_broadcast) {
