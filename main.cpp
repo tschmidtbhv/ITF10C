@@ -83,7 +83,13 @@ void createSubnet() {
         
         //Das erste Subnetz wird erstellt
         if (i == 0) {
-            
+            /*
+             Abfragen ob es wirklich ein 192.168.0. Netz ist,
+             gibt ja auch 172.16.XXX.XXX für VPNs
+             
+              192.168.0.0/24, das /24 muss berücksichtigt werden.
+              In der offiziellen Aufgabe ist es AFAIK ein /25 
+            */
             
             usedSubnets[i] = subnet(splitAndConvert("192.168.0.1"),
                                     (splitAndConvert("192.168.0.1")+1),
@@ -92,9 +98,20 @@ void createSubnet() {
                                     name,
                                     description);
         } else {
+            long max_broadcast = 0;
             for (int i = 0; i< usedSubnets.size(); i++) {
-                
+                if( usedSubnets[i].getBroadCast() > max_broadcast) {
+                    max_broadcast = usedSubnets[i].getBroadCast();
+                }
             }
+            
+            usedSubnets[i] = subnet(
+                                    max_broadcast+1,
+                                    max_broadcast+2,
+                                    max_broadcast+(nextExpToTwo(networkSize)-1),
+                                    max_broadcast+nextExpToTwo(networkSize),
+                                    name,
+                                    description);
             
         }
         /*
