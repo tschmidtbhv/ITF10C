@@ -15,9 +15,11 @@ int ipBlock1, ipBlock2,ipBlock3, ipBlock4;
 void selectedPoint(int choosenOne);
 long splitAndConvert(string paramIPAddress);
 void createSubnets();
+void getNetClassDigets();
 int nextExpToTwo(int input);
 
 int main(void) {
+    getNetClassDigets();
     createSubnets();
     
     return EXIT_SUCCESS;    
@@ -142,6 +144,30 @@ void createSubnets() {
          usedSubnets.push_back(subnet(0,0,0,0,name,notice));
          */
     }
+}
+
+void getNetClassDigets() {
+    string input;
+    
+    do {
+        cout << "Möchten Sie eine andere Netzklasse nutzen als 192.168.0.X ? (Y/N)" << endl; 
+        cin.ignore();
+        getline(cin,input);  
+        // Eingabe in Kleinschreibung umwandeln
+        transform(input.begin(),input.end(),input.begin(),::tolower);
+    } while(input != "n" && input != "y");
+    
+    if(input == "y") {
+        
+        /* Jeden Einzelnen Block nach extra Parametern abfragen, die zwischen 1 und 254 liegen */
+    
+    } else {
+        ipBlock1 = 192;
+        ipBlock2 = 168;
+        ipBlock3 = 0;
+        ipBlock4 = 1;
+    }
+    
 }
 
 /*
