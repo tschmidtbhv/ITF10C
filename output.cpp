@@ -8,8 +8,8 @@
 using namespace std;
 
 // Header für Klassen einbinden
-#include "ipaddress.h"
-#include "subnet.h"
+#include "headers/ipaddress.h"
+#include "headers/subnet.h"
 
 
 

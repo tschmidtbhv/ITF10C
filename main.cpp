@@ -5,8 +5,8 @@
 using namespace std;
 
 // Klassen einbinden damit wir diese instanzieren können
-#include "ipaddress.h"
-#include "subnet.h"
+#include "headers/ipaddress.h"
+#include "headers/subnet.h"
 
 int ipBlock1, ipBlock2,ipBlock3, ipBlock4;
 

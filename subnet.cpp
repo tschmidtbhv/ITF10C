@@ -3,8 +3,8 @@
 
 // Header für die Klassen einbinden, damit Sie sich selbst kennt.
 #include <string>
-#include "subnet.h"
-#include "ipaddress.h"
+#include "headers/subnet.h"
+#include "headers/ipaddress.h"
 using namespace std;
 
 // Default-Konstruktor
