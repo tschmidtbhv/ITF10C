@@ -14,11 +14,12 @@ int ipBlock1, ipBlock2,ipBlock3, ipBlock4;
 
 void selectedPoint(int choosenOne);
 long splitAndConvert(string paramIPAddress);
-s
+int nextExpToTwo(int input);
+
 
 int main(void) {
     
-    cout << splitAndConvert("192.168.0.1") << endl;
+    cout << nextExpToTwo(0) << endl;
     return EXIT_SUCCESS;
   
 } 
@@ -87,4 +88,21 @@ long splitAndConvert(string paramIPAddress) {
     }
     
     return output;
+}
+
+/*
+ * Nächst größere Zahl auf Basis der zwei Bestimmen 
+ *
+ * @param Zahl zu der die größere Zahl bestimmt werden soll
+ * @return Zahl größer als input, auf Basis von zwei
+ */
+int nextExpToTwo(int input) {
+    
+    int calculate = 0;
+    
+    for(int i = 0; calculate <= input; i++) {
+        calculate = pow(2,i);
+    }
+    
+    return calculate;
 }
