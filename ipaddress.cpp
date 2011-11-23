@@ -46,7 +46,11 @@ ipaddress::ipaddress(
     this->notice = "";
 };
 
-// Ip-Adresse als String abfragen
+/**
+ * IP-Adresse als String abfragen
+ * 
+ * @return IP-Adresse as String
+ */
 string ipaddress::getString() {
 
     // Stringstream für die Konvertierung anlegen
@@ -62,7 +66,11 @@ string ipaddress::getString() {
     return output.str();
 };
 
-// Ip-Adresse als Integer abfragen
+/**
+ * IP-Adresse in numerischen Wert umwandeln 
+ *
+ * @return Ip-Adresse as Long
+ */
 long ipaddress::getLong() {
     
     /*
@@ -86,19 +94,41 @@ long ipaddress::getLong() {
     return output;
 };
 
+/**
+ * Abfrage des Hostnamen einer IP-Adresse
+ *
+ * @return Hostname as String
+ */
 string ipaddress::getHostname() {
     return this->hostname;
 }
 
+
+/**
+ * Abfrage der Notiz zu einer IP-Adresse 
+ *
+ * @return Notice as String
+ */
 string ipaddress::getNotice() {
     return this->notice;
 }
 
+/**
+ * Setzt Hostnamen für eine IP-Adresse
+ *
+ * @param string paramValue als neuer Hostnamen
+ */
+void ipaddress::setHostname(string paramValue) {
+ this->hostname = paramValue;
+}
+
+/**
+ * Setzt Notiz für eine IP-Adresse 
+ *
+ * @param string paramValue als neue Notiz
+ */
 void ipaddress::setNotice(string paramValue) {
     this->notice = paramValue;
 }
 
-void ipaddress::setHostname(string paramValue) {
-    this->hostname = paramValue;
-}
 #endif

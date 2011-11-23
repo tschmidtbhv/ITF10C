@@ -8,7 +8,17 @@ Folgende Regeln gelten bei der Arbeit am Code:
 	* einer CPP-Datei mit der Implementierung
 * Alle Parameter für Funktionen beginnen mit 'Param' um sie von Attributen/Variablen unterscheiden zu können
 * Instanziere Objekte sind am Ende der Nutzung zu 'delete'n
+* Doxygen-Dokumentation für Methoden/Klassen etc.
+* Keine @Params oder @Return definieren, wenn keine vorhanden oder void
 
 Folgende Regeln gelten bei der Arbeit mit Git:
 * Nicht jeden Scheiß als commit nehmen, sondern nur größere Änderungen mit aussagekräfter Commit-Message
 * Viele kleine Commit's bei Bedarf rebase'n um Sie zusammenzufassen
+
+Aufgaben:
+@Nico-X - Klasse für schicke Ausgabe der Subnetze und Übersicht
+@tschmidtbhv - Eingabe der Anzahl von Subnetzen etc. und anlegen der Objekte in einem Vector
+@splatterb0y - Speichern der Daten in einer sqlite3 Datenbank und laden 
+
+Ziel:
+Das Ding so rocken, das Herr Ciborra uns freiwillig von EBA freistellt. :D 

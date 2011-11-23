@@ -12,12 +12,16 @@ using namespace std;
 
 class subnet {
 	private:
-        // Größe der Benutzereingabe
-        // ???? int realSize;
-        // bsp: 28;
-        // Größe in der Kalkulation
-        // ??? int virtualSize;
-        // bsp: 28 -> 32;
+        /* 
+         Größe der Benutzereingabe
+         ???? int realSize;
+         bsp: 28;
+         Größe in der Kalkulation
+         ??? int virtualSize;
+         bsp: 28 -> 32; 
+         
+         Brauchen wir das, macht das Sinn? Dann klickt bitte auf Daumen hoch neben diesem Kommentar. xD 
+         */
         
         // Broadcast-Adresse
 		long broadcast;		

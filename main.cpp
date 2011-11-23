@@ -134,11 +134,9 @@ void selectedPoint(int choosenOne) {
 /*
  * splitAndConvert
  * Split the input value and convert char string to int
- * @params 
  * 
- * return void
+ * @return void
  */
-
 void splitAndConvert() {
     
     char ipAdress[16];

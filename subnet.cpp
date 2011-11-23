@@ -31,6 +31,11 @@ void subnet::addIP(ipaddress paramipaddress) {
     this->usedAddresses.push_back(paramipaddress);
 };
 
+/**
+ * Entfernt eine IP-Adresse aus dem Vector mit der Auflistung
+ * 
+ * @param ipaddress paramIp
+ */
 void subnet::dropIP(ipaddress paramIp) {
     // Jedes Element durchgehen bis wir das gefunden haben das wir löschen wollen.
     for(int i = 0; i < this->usedAddresses.size(); i++) 
@@ -46,7 +51,12 @@ void subnet::dropIP(ipaddress paramIp) {
     }
 };
 
-// Sucht ob eine IP in ein Subnetz gehört
+/**
+ * Prüft ob eine IP in den Range des Subnetzes passt
+ * 
+ * @param ipaddress paramIp 
+ * @return wenn gefunden dann true, ansonsten false als bool
+ */
 bool subnet::searchValid(ipaddress paramIp) {
     if(
        this->rangeStart <= paramIp.getLong() &&
@@ -61,7 +71,12 @@ bool subnet::searchValid(ipaddress paramIp) {
     }
 }
 
-// Sucht ob die IP im Subnetz mit Hostnamen vergeben ist
+/**
+ * Sucht ob eine Adresse explizit vergeben ist (mit Hostnamen)
+ *
+ * @param IP-Adresse in numerischer Notation
+ * @return wenn gefunden dann true, ansonsten false als bool
+ */
 bool subnet::searchExists(ipaddress paramIp) {
     for(int i = 0; i < this->usedAddresses.size(); i++)
     {
@@ -73,24 +88,47 @@ bool subnet::searchExists(ipaddress paramIp) {
     return false;
 }
 
-// Vector-Objekt mit allen Adressen zurückgeben, für die Darstellung
+/**
+ * Gibt ein Vector-Objekt mit allen defineirten IP-Adressen zurück
+ *
+ * @return usedAddresses as <vector>ipadress 
+ */
 vector<ipaddress> subnet::getAddresses() {
     return this->usedAddresses;
 }
 
-// Anfang des IP-Bereiches abfragen
+/**
+ * Gibt den Anfang der Ranges in numerische Notation zurück
+ * 
+ * @return rangeStart as long
+ */
 long subnet::getRangeStart() {
     return this->rangeStart; 
 };
 
+/**
+ * Gibt den Ende der Range in numerischer Notation zurück
+ *
+ * @return rangeEnd as long
+ */
 long subnet::getRangeEnd() {
     return this->rangeEnd; 
 };
 
+/**
+ * Gibt die Broadcast-Adresse als numerische Notation zurück
+ *
+ * @return broadcast as long
+ */
 long subnet::getBroadCast() {
     return this->broadcast;
 };
 
+/**
+ * Gibt die Netzadresse als numerische Notation zurück
+ *
+ * @return netaddress as long
+ */
 long subnet::getNetAdress() {
     return this->netAddress;
 };
