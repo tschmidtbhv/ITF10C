@@ -90,5 +90,11 @@ class subnet {
     
         // Netzwerk-Adresse abfragen
 		long getNetAdress();
+    
+        // Name-Abfragen
+        string getName();
+    
+        // Notiz-Abfrage
+        string getNotice();
 };
 #endif

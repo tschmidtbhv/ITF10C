@@ -64,7 +64,7 @@ void getNetClassDigets() {
     string input = "";
     
     do {
-        cout << "Möchten Sie eine andere Netzklasse nutzen als 192.168.0.X ? (Y/N) " << endl; 
+        cout << "Möchten Sie eine andere Netzklasse nutzen als 192.168.0.X ? (Y/N) "; 
         getline(cin,input); 
         // Eingabe in Kleinschreibung umwandeln
         transform(input.begin(),input.end(),input.begin(),::tolower);
@@ -126,6 +126,7 @@ void createSubnets() {
             cout << "Bitte wählen Sie eine Zahl im Bereich von 1 bis 10." << endl;
         }
     } while(networkCount <= 0 || networkCount >= 11);
+    cout << endl;
 
     for(int i = 0; i < networkCount; i++) {
         cout << "Subnetz " << (i+1) << ":" << endl;
@@ -206,7 +207,29 @@ void createSubnets() {
 }
 
 void showSubnetMenu() {
+    int menu_input = 0;
+    int max_value = 0;
     
+    cout << "0 - Beenden" << endl;
+    
+    /* HIER! Müsste Nico's Output-Klasse zum Einsatz kommen --> */
+    for(int i = 0; i < usedSubnets.size(); i++) {
+        cout << (i+1) << " - " << usedSubnets[i].getName() << " (" << usedSubnets[i].getNotice() << ")" << endl;
+        max_value = (i+1);
+    }
+    /* <-- bis hier */
+    
+    cout << "Welches Subnetz möchten Sie bearbeiten? Bitte geben Sie die Zahl ein. " << endl;
+    cout << "Beenden Sie das Programm in dem Sie 0 eingeben." << endl;
+    
+    do {
+        scanf("%d",&menu_input);
+        if(menu_input > 0 && menu_input < max_value) {
+                // Subnetz aufrufen, IP-Adresse hinzufügen, Anzeige-Option und wieder 0 - Beenden
+        }
+    } while(menu_input != 0);
+    
+    return;
 }
 
 /**

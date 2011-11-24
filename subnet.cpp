@@ -141,4 +141,22 @@ long subnet::getBroadCast() {
 long subnet::getNetAdress() {
     return this->netAddress;
 };
+
+/**
+ * Gibt den Namen als String zurück
+ *
+ * @return Name as String
+ */
+string subnet::getName() {
+    return this->name;
+}
+
+/** 
+ * Gibt die Notiz als String zurück
+ *
+ * @return Notice as String
+ */
+string subnet::getNotice() {
+    return this->notice;
+}
 #endif
