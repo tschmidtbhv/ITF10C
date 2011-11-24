@@ -22,7 +22,10 @@ void createSubnets();
 void showSubnetMenu();
 void getNetClassDigets();
 void editSubnet(int menu_input);
+void addIPToSubnet (int menu_input);
 void editIPInSubnet(int menu_input);
+void makeIpBlocks(long max_broadcast);
+
 
 int main(void) {
     getNetClassDigets();
@@ -75,36 +78,7 @@ void getNetClassDigets() {
     
     if(input == "y") {
         
-        /* Jeden Einzelnen Block nach extra Parametern abfragen, die zwischen 1 und 255 liegen */
-        
-        do {
-            cout << "Block 1: ";
-            cin.ignore();
-            scanf("%d",&ipBlock1);
-            if(ipBlock1 < 0 || ipBlock1 > 255) {
-                cout << "Bitte geben Sie eine Zahl zwischen 0 und 255 ein." << endl;
-            }
-        } while(ipBlock1 < 0 || ipBlock1 > 255 );
-        
-        do {
-            cout << "Block 2: ";
-            cin.ignore();
-            scanf("%d",&ipBlock2);
-            if(ipBlock2 < 0 || ipBlock2 > 255) {
-                cout << "Bitte geben Sie eine Zahl zwischen 0 und 255 ein." << endl;
-            }
-        } while(ipBlock2 < 0 || ipBlock2 > 255 );
-        
-        do {
-            cout << "Block 3: ";
-            cin.ignore();
-            scanf("%d",&ipBlock3);
-            if(ipBlock3 < 0 || ipBlock3 > 255) {
-                cout << "Bitte geben Sie eine Zahl zwischen 0 und 255 ein." << endl;
-            }
-        } while(ipBlock3 < 0 || ipBlock3 > 255 );
-        
-        cout << endl;
+        makeIpBlocks(255);
         
     } else {
         ipBlock1 = 192;
@@ -115,6 +89,39 @@ void getNetClassDigets() {
     ipBlock4 = 0;
     
     return;
+}
+
+void makeIpBlocks(long max_broadcast) {
+    /* Jeden Einzelnen Block nach extra Parametern abfragen, die zwischen 1 und 255 liegen */
+    
+    do {
+        cout << "Block 1: ";
+        cin.ignore();
+        scanf("%d",&ipBlock1);
+        if(ipBlock1 < 0 || ipBlock1 > max_broadcast) {
+            cout << "Bitte geben Sie eine Zahl zwischen 0 und " << max_broadcast << " ein." << endl;
+        }
+    } while(ipBlock1 < 0 || ipBlock1 > max_broadcast );
+    
+    do {
+        cout << "Block 2: ";
+        cin.ignore();
+        scanf("%d",&ipBlock2);
+        if(ipBlock2 < 0 || ipBlock2 > max_broadcast) {
+            cout << "Bitte geben Sie eine Zahl zwischen 0 und " << max_broadcast << " ein." << endl;
+        }
+    } while(ipBlock2 < 0 || ipBlock2 > max_broadcast );
+    
+    do {
+        cout << "Block 3: ";
+        cin.ignore();
+        scanf("%d",&ipBlock3);
+        if(ipBlock3 < 0 || ipBlock3 > max_broadcast) {
+            cout << "Bitte geben Sie eine Zahl zwischen 0 und " << max_broadcast << " ein." << endl;
+        }
+    } while(ipBlock3 < 0 || ipBlock3 > max_broadcast );
+    
+    cout << endl;
 }
 
 void createSubnets() {
@@ -259,7 +266,7 @@ void editSubnet(int menu_input){
         cout << "Was möchten Sie bearbeiten? " << endl;
         cout << "1 - Name" << endl;
         cout << "2 - Beschreibung" << endl;
-        cout << "3 - IP bearbeiten" << endl;
+        cout << "3 - IP hinzufügen" << endl;
         cout << "0 - Bearbeitung beenden" << endl;
         
         cin >> eingabe;
@@ -283,7 +290,7 @@ void editSubnet(int menu_input){
             }
             
             case 3: {
-                editIPInSubnet(menu_input);
+                addIPToSubnet(menu_input);
                 break;
             }
 
@@ -293,6 +300,32 @@ void editSubnet(int menu_input){
         }
     } while (eingabe != 0 && (eingabe == 1 || eingabe == 2 || eingabe == 3));
     
+    return;
+}
+
+/*
+ * addIPToSubnet
+ * add IP to Subnet
+ * @params int menu_input
+ * return void
+ *
+ */ 
+
+void addIPToSubnet (int menu_input) {
+    long max_broadcast;
+    max_broadcast = usedSubnets[menu_input].getBroadCast();
+    
+    char  ip[3] = ""; 
+    cout << "Geben Sie die IP ein:" << endl;
+    makeIpBlocks(max_broadcast);
+    cout << "Block 4: " << endl;
+    cin >> ip;
+    ipBlock4 = atoi(ip);
+    
+    ipaddress ipaddress = ipaddress::ipaddress(ipBlock1,ipBlock2,ipBlock3,ipBlock4);
+    if (splitAndConvert(ip) < max_broadcast) {
+        usedSubnets[menu_input].addIP(ipaddress);
+    }
     return;
 }
 
@@ -307,6 +340,7 @@ void editSubnet(int menu_input){
 void editIPInSubnet(int menu_input) {
     
     vector<ipaddress> addresses = usedSubnets[menu_input].getAddresses();
+    cout << "ip te: " << addresses[1].getString();
     for (int i = 0; i < addresses.size(); i++) {
         cout << "ip: " << addresses[i].getString();
     }
