@@ -1,5 +1,6 @@
 // Standard-Includes sonst wird hier gar nichts
 #include <iostream>
+#include <sstream>
 #include <cstdio>
 #include <string>
 #include <vector>
@@ -11,16 +12,20 @@ using namespace std;
 #include "headers/subnet.h"
 
 int ipBlock1, ipBlock2,ipBlock3, ipBlock4;
+vector<subnet> usedSubnets;
 
 void selectedPoint(int choosenOne);
 long splitAndConvert(string paramIPAddress);
-void createSubnets();
-void getNetClassDigets();
 int nextExpToTwo(int input);
+
+void createSubnets();
+void showSubnetMenu();
+void getNetClassDigets();
 
 int main(void) {
     getNetClassDigets();
     createSubnets();
+    showSubnetMenu();
     
     return EXIT_SUCCESS;    
 } 
@@ -55,9 +60,63 @@ void selectedPoint(int choosenOne) {
     
 }
 
+void getNetClassDigets() {
+    string input = "";
+    
+    do {
+        cout << "Möchten Sie eine andere Netzklasse nutzen als 192.168.0.X ? (Y/N) " << endl; 
+        getline(cin,input); 
+        // Eingabe in Kleinschreibung umwandeln
+        transform(input.begin(),input.end(),input.begin(),::tolower);
+        
+    } while(input != "n" && input != "y");
+    
+    if(input == "y") {
+        
+        /* Jeden Einzelnen Block nach extra Parametern abfragen, die zwischen 1 und 255 liegen */
+        
+        do {
+            cout << "Block 1: ";
+            cin.ignore();
+            scanf("%d",&ipBlock1);
+            if(ipBlock1 < 0 || ipBlock1 > 255) {
+                cout << "Bitte geben Sie eine Zahl zwischen 0 und 255 ein." << endl;
+            }
+        } while(ipBlock1 < 0 || ipBlock1 > 255 );
+        
+        do {
+            cout << "Block 2: ";
+            cin.ignore();
+            scanf("%d",&ipBlock2);
+            if(ipBlock2 < 0 || ipBlock2 > 255) {
+                cout << "Bitte geben Sie eine Zahl zwischen 0 und 255 ein." << endl;
+            }
+        } while(ipBlock2 < 0 || ipBlock2 > 255 );
+        
+        do {
+            cout << "Block 3: ";
+            cin.ignore();
+            scanf("%d",&ipBlock3);
+            if(ipBlock3 < 0 || ipBlock3 > 255) {
+                cout << "Bitte geben Sie eine Zahl zwischen 0 und 255 ein." << endl;
+            }
+        } while(ipBlock3 < 0 || ipBlock3 > 255 );
+        
+        cout << endl;
+        
+    } else {
+        ipBlock1 = 192;
+        ipBlock2 = 168;
+        ipBlock3 = 0;
+    }
+    
+    ipBlock4 = 0;
+    
+    return;
+}
 
 void createSubnets() {
-    cout << " Wieviele Subnetze möchten Sie anlegen? ";
+    cout << "Wieviele Subnetze möchten Sie anlegen? ";
     
     int networkCount = 0;
     do {
@@ -68,7 +127,6 @@ void createSubnets() {
         }
     } while(networkCount <= 0 || networkCount >= 11);
 
-    vector<subnet> usedSubnets;
     for(int i = 0; i < networkCount; i++) {
         cout << "Subnetz " << (i+1) << ":" << endl;
         
@@ -106,11 +164,19 @@ void createSubnets() {
               In der offiziellen Aufgabe ist es AFAIK ein /25 
             */
             
+            stringstream ipStream;
+            ipStream << ipBlock1 << ".";
+            ipStream << ipBlock2 << ".";
+            ipStream << ipBlock3 << ".";
+            ipStream << ipBlock4;
+            
+            string ipString = ipStream.str();
+            
             usedSubnets.push_back(
-                                  subnet(splitAndConvert("192.168.0.1"),
-                                    (splitAndConvert("192.168.0.1")+1),
-                                    (splitAndConvert("192.168.0.1")+nextExpToTwo(networkSize)-1),
-                                    (splitAndConvert("192.168.0.1")+nextExpToTwo(networkSize)),
+                                  subnet(splitAndConvert(ipString),
+                                    (splitAndConvert(ipString)+1),
+                                    (splitAndConvert(ipString)+nextExpToTwo(networkSize)-1),
+                                    (splitAndConvert(ipString)+nextExpToTwo(networkSize)),
                                     name,
                                     description)
                                 );
@@ -136,41 +202,14 @@ void createSubnets() {
                                 );
             
         }
-        /*
-         Viele tolle Berechnungen von Broadcast,
-         Netzadresse, Start und Ende des Range.
-         
-         Dann objekt hinzufügen:
-         usedSubnets.push_back(subnet(0,0,0,0,name,notice));
-         */
     }
 }
 
-void getNetClassDigets() {
-    string input;
-    
-    do {
-        cout << "Möchten Sie eine andere Netzklasse nutzen als 192.168.0.X ? (Y/N)" << endl; 
-        cin.ignore();
-        getline(cin,input);  
-        // Eingabe in Kleinschreibung umwandeln
-        transform(input.begin(),input.end(),input.begin(),::tolower);
-    } while(input != "n" && input != "y");
-    
-    if(input == "y") {
-        
-        /* Jeden Einzelnen Block nach extra Parametern abfragen, die zwischen 1 und 254 liegen */
-    
-    } else {
-        ipBlock1 = 192;
-        ipBlock2 = 168;
-        ipBlock3 = 0;
-        ipBlock4 = 1;
-    }
+void showSubnetMenu() {
     
 }
 
-/*
+/**
  * splitAndConvert
  * Split the input value and convert char string to int
  * 
@@ -205,7 +244,7 @@ long splitAndConvert(string paramIPAddress) {
     return output;
 }
 
-/*
+/**
  * Nächst größere Zahl auf Basis der zwei Bestimmen 
  *
  * @param Zahl zu der die größere Zahl bestimmt werden soll
