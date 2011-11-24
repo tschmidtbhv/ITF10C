@@ -58,16 +58,16 @@ class ipaddress {
         // Gibt die IP als Int aus, aus 192.168.0.1 wird 192168000001
 		long getLong();		
     
-        // Hostnamen abfragen
-        string getHostname();
-    
-        // Notiz abfragen
-        string getNotice();
-    
         // Hostnamen ändern
         void setHostname(string paramValue);
     
         // Notiz ändern
         void setNotice(string paramValue);
+    
+        // Name abfragen
+        string getHostName();
+    
+        // Notice
+        string getNotice();
 };
 #endif

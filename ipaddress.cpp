@@ -104,7 +104,7 @@ long ipaddress::getLong() {
  *
  * @return Hostname as String
  */
-string ipaddress::getHostname() {
+string ipaddress::getHostName() {
     return this->hostname;
 }
 
@@ -135,5 +135,4 @@ void ipaddress::setHostname(string paramValue) {
 void ipaddress::setNotice(string paramValue) {
     this->notice = paramValue;
 }
-
 #endif
