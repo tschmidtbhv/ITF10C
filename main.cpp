@@ -21,6 +21,7 @@ int nextExpToTwo(int input);
 void createSubnets();
 void showSubnetMenu();
 void getNetClassDigets();
+void editSubnet(int menu_input);
 
 int main(void) {
     getNetClassDigets();
@@ -225,9 +226,65 @@ void showSubnetMenu() {
     do {
         scanf("%d",&menu_input);
         if(menu_input > 0 && menu_input < max_value) {
+            editSubnet(menu_input);
                 // Subnetz aufrufen, IP-Adresse hinzufügen, Anzeige-Option und wieder 0 - Beenden
+        } else {
+            cout << "Bitte erneut eingeben.";
         }
     } while(menu_input != 0);
+    
+    return;
+}
+
+
+/*
+ * editSubnet 
+ * Edit name or Description
+ * @params int menu_input
+ * return void
+ *
+ */
+ 
+void editSubnet(int menu_input){
+    
+    int eingabe;
+    
+    do {
+        
+        
+        cout << "Sie bearbeiten Subnetz: " << usedSubnets[menu_input].getName() << endl;
+        cout << "Beschreibung: " << usedSubnets[menu_input].getNotice() << endl;
+        cout << "-----------------------\n" << endl;
+        cout << "Was möchten Sie bearbeiten? " << endl;
+        cout << "1 - Name" << endl;
+        cout << "2 - Beschreibung" << endl;
+        cout << "0 - Bearbeitung beenden" << endl;
+        
+        cin >> eingabe;
+        switch (eingabe) {
+            
+            case 1: {
+                
+                string name = "";
+                cout << "Geben Sie einen neuen Namen ein:" << endl;
+                getline(cin, name); 
+                usedSubnets[menu_input].name = name;
+                break;
+            }
+                
+            case 2: {
+                string description = "";
+                cout << "Geben Sie eine neue Beschreibung ein:" << endl;
+                getline(cin, description); 
+                usedSubnets[menu_input].notice = description;
+                break;
+            }
+
+            default: {
+                break;
+            }
+        }
+    } while (eingabe != 0 && (eingabe == 1 || eingabe == 2));
     
     return;
 }
