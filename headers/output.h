@@ -1,13 +1,15 @@
 #ifndef output_header
 #define output_header
-/*
- Diese Datei beschreibt alle Methoden und Attribute der Klasse 'subnet'
- wenn du fleißig an den Funktionen arbeiten möchtest,
- dann schau unter <output.cpp>
- */
+
+#include "ipaddress.h"
+#include "subnet.h"
+#include <vector>
+#include <string>
 
 class output {
     public:
+ 	void showSubnet(vector<subnet> subnetz);
+		void showIpAddresses(vector<ipaddress> ipadressen);
     private:
 };
 
