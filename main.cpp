@@ -21,6 +21,7 @@ int nextExpToTwo(int input);
 void createSubnets();
 void showSubnetMenu();
 void getNetClassDigets();
+void searchForIp(long paramIPAddress);
 
 int main(void) {
     getNetClassDigets();
@@ -282,4 +283,21 @@ int nextExpToTwo(int input) {
     }
     
     return calculate;
+}
+
+void searchForIp(long paramIPAddress) {
+    for(int i = 0; i < usedSubnets.size(); i++) {
+        if(usedSubnets[i].getRangeStart() > paramIPAddress && paramIPAddress < usedSubnets[i].getRangeEnd()) {
+            vector<ipaddress> usedIPAdresses = usedSubnets[i].getAddresses();
+            for(int j = 0; j < usedIPAdresses.size(); j++) {
+                if(paramIPAddress == usedIPAdresses[j].getLong()) {
+                    cout << "IP-Adresse gehört zum Subnetz " << usedSubnets[i].getName() << " und hat den Hostname " << usedIPAdresses[j].getHostName() << "." << endl;
+                    return;
+                }
+            } 
+            cout << "IP-Adresse gehört zum Subnetz " << usedSubnets[i].getName() << ".";
+        } else {
+            cout << "Die IP-Adresse gehört zu keinem Subnetz." << endl;
+        }
+    }
 }
