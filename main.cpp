@@ -22,6 +22,7 @@ void createSubnets();
 void showSubnetMenu();
 void getNetClassDigets();
 void editSubnet(int menu_input);
+void editIPInSubnet(int menu_input);
 
 int main(void) {
     getNetClassDigets();
@@ -258,6 +259,7 @@ void editSubnet(int menu_input){
         cout << "Was möchten Sie bearbeiten? " << endl;
         cout << "1 - Name" << endl;
         cout << "2 - Beschreibung" << endl;
+        cout << "3 - IP bearbeiten" << endl;
         cout << "0 - Bearbeitung beenden" << endl;
         
         cin >> eingabe;
@@ -279,12 +281,36 @@ void editSubnet(int menu_input){
                 usedSubnets[menu_input].notice = description;
                 break;
             }
+            
+            case 3: {
+                editIPInSubnet(menu_input);
+                break;
+            }
 
             default: {
                 break;
             }
         }
-    } while (eingabe != 0 && (eingabe == 1 || eingabe == 2));
+    } while (eingabe != 0 && (eingabe == 1 || eingabe == 2 || eingabe == 3));
+    
+    return;
+}
+
+/*
+ * editIPInSubnet
+ * edit ip in subnet
+ * @params int menu_input
+ * return void
+ *  
+ */
+
+void editIPInSubnet(int menu_input) {
+    
+    vector<ipaddress> addresses = usedSubnets[menu_input].getAddresses();
+    for (int i = 0; i < addresses.size(); i++) {
+        cout << "ip: " << addresses[i].getString();
+    }
+    
     
     return;
 }
