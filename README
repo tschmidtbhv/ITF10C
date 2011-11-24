@@ -18,7 +18,7 @@ Folgende Regeln gelten bei der Arbeit mit Git:
 Aufgaben:
 @Nico-X - Klasse für schicke Ausgabe der Subnetze und Übersicht
 @tschmidtbhv - Machen was übrig ist? (Hostnmane und Notizen zu IP-Adressen in Subnetzen) 
-@splatterb0y - Hoffen das alles fertig wird. -.-
+@splatterb0y - Hoffen das alles fertig wird. Morgen früh mergen und endfertigung. 
     
      
     // Anzahl Clients je Subnetz    
@@ -29,10 +29,6 @@ Aufgaben:
     // Beenden 
     
     /*
-     @Nico-X, wäre das was für dich?
-      
-     !!!Klasse!!! für die Darstellung von IP-Listen und Subnetzen etc.
-     
      Output->printSubnets(vector<subnet> paramSubnet) 
      und dann
      
