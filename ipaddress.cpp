@@ -90,9 +90,9 @@ long ipaddress::getLong() {
     // Variable anlegen
     long output = 0;
     
-    output += this->block1 * pow(10,9);
-    output += this->block2 * pow(10,6);
-    output += this->block3 * pow(10,3);
+    output += this->block1 * pow(10.0,9.0);
+    output += this->block2 * pow(10.0,6.0);
+    output += this->block3 * pow(10.0,3.0);
     output += this->block4;
     
     // Variable zurückgeben

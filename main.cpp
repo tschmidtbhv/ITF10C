@@ -396,13 +396,13 @@ long splitAndConvert(string paramIPAddress) {
     while(pch != NULL) {
         switch(iteration) {
             case 0:
-                output += atoi(pch) * pow(10,9);
+                output += atoi(pch) * pow(10.0,9.0);
                 break;
             case 1:
-                output += atoi(pch) * pow(10,6);
+                output += atoi(pch) * pow(10.0,6.0);
                 break;
             case 2:
-                output += atoi(pch) * pow(10,3);
+                output += atoi(pch) * pow(10.0,3.0);
                 break;
             case 3:
                 output += atoi(pch);
@@ -426,7 +426,7 @@ int nextExpToTwo(int input) {
     int calculate = 0;
 
     for(int i = 0; calculate <= input; i++) {
-        calculate = pow(2,i);
+        calculate = pow(2.0,i);
     }
 
     return calculate;
