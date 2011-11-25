@@ -37,11 +37,7 @@ class subnet {
         // Adressbereich Ende
 		long rangeEnd;	
      
-        // Name für das Subnetz
-        string name;
-    
-        // Notiz zum Subnetz
-        string notice;
+        
     
         // Array für extra vergebene IP's
         vector<ipaddress> usedAddresses;
@@ -63,7 +59,13 @@ class subnet {
         
         // Destruktor
         ~subnet();
-
+        
+        // Name für das Subnetz
+        string name;
+        
+        // Notiz zum Subnetz
+        string notice;
+    
         // Suchfunktion ob im Subnetz
 		bool searchValid(ipaddress paramIp);	
     
