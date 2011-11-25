@@ -84,12 +84,12 @@ void output::showSubnet(vector<subnet> subnetz)
 		if (i<10)
 		{
             cout<<"| ";
-            printf("%i",i);
+            printf("%i",i+1);
         }
         else
         {
             cout<<"|";
-            printf("%i",i);
+            printf("%i",i+1);
         }
         
         string netaddress = convert(subnetz[i].getNetAdress());

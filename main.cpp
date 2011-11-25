@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <math.h>
+#include <algorithm>
 using namespace std;
 
 // Klassen einbinden damit wir diese instanzieren können
@@ -173,7 +174,7 @@ void createSubnets() {
 
             usedSubnets.push_back(
                                   subnet(nextExpToTwo(networkSize),
-                                         splitAndConvert(ipString),
+                                    (splitAndConvert(ipString)),
                                     (splitAndConvert(ipString)+1),
                                     (splitAndConvert(ipString)+nextExpToTwo(networkSize)-1),
                                     (splitAndConvert(ipString)+nextExpToTwo(networkSize)),
@@ -437,17 +438,22 @@ int nextExpToTwo(int input) {
  */
 void searchForIp(long paramIPAddress) {
     for(int i = 0; i < usedSubnets.size(); i++) {
-        if(usedSubnets[i].getRangeStart() >= paramIPAddress && paramIPAddress <= usedSubnets[i].getRangeEnd()) {
+        if(usedSubnets[i].getNetAdress() <= paramIPAddress &&
+           paramIPAddress <= usedSubnets[i].getBroadCast())
+        {
             vector<ipaddress> usedIPAdresses = usedSubnets[i].getAddresses();
+            
             for(int j = 0; j < usedIPAdresses.size(); j++) {
                 if(paramIPAddress == usedIPAdresses[j].getLong()) {
-                    cout << "IP-Adresse gehört zum Subnetz " << usedSubnets[i].getName() << " und hat den Hostname " << usedIPAdresses[j].getHostName() << "." << endl;
+                    cout << "IP-Adresse gehört zum Subnetz " << usedSubnets[i].getName() 
+                    << " und hat den Hostname " << usedIPAdresses[j].getHostName() << "." << endl;
                     return;
                 }
             } 
-            cout << "IP-Adresse gehört zum Subnetz " << usedSubnets[i].getName() << ".";
-        } else {
-            cout << "Die IP-Adresse gehört zu keinem Subnetz." << endl;
-        }
+            
+            cout << "IP-Adresse gehört zum Subnetz " << usedSubnets[i].getName() << "." << endl;
+            return;
+        } 
     }
+    cout << "Die IP-Adresse gehört zu keinem Subnetz." << endl;
 }
