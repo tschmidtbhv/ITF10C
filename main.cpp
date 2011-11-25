@@ -40,7 +40,8 @@ void getNetClassDigets() {
     string input = "";
     
     do {
-        cout << "Möchten Sie eine andere Netzklasse nutzen als 192.168.0.X ? (Y/N) "; 
+        cout << "Möchten Sie eine andere Netzklasse nutzen als 192.168.0.X ? (Y/N) " << endl; 
+        cout << "> ";
         getline(cin,input); 
         // Eingabe in Kleinschreibung umwandeln
         transform(input.begin(),input.end(),input.begin(),::tolower);
@@ -66,7 +67,8 @@ void makeIpBlocks(long max_broadcast) {
     /* Jeden Einzelnen Block nach extra Parametern abfragen, die zwischen 1 und 255 liegen */
     
     do {
-        cout << "Block 1: ";
+        cout << "Block 1: " << endl;
+        cout << "> ";
         cin.ignore();
         scanf("%d",&ipBlock1);
         if(ipBlock1 < 0 || ipBlock1 > max_broadcast) {
@@ -75,7 +77,8 @@ void makeIpBlocks(long max_broadcast) {
     } while(ipBlock1 < 0 || ipBlock1 > max_broadcast );
     
     do {
-        cout << "Block 2: ";
+        cout << "Block 2: " << endl;
+        cout << "> ";
         cin.ignore();
         scanf("%d",&ipBlock2);
         if(ipBlock2 < 0 || ipBlock2 > max_broadcast) {
@@ -84,7 +87,8 @@ void makeIpBlocks(long max_broadcast) {
     } while(ipBlock2 < 0 || ipBlock2 > max_broadcast );
     
     do {
-        cout << "Block 3: ";
+        cout << "Block 3: " << endl;
+        cout << "> ";
         cin.ignore();
         scanf("%d",&ipBlock3);
         if(ipBlock3 < 0 || ipBlock3 > max_broadcast) {
@@ -96,7 +100,8 @@ void makeIpBlocks(long max_broadcast) {
 }
 
 void createSubnets() {
-    cout << "Wieviele Subnetze möchten Sie anlegen? ";
+    cout << "Wieviele Subnetze möchten Sie anlegen? " << endl;
+    cout << "> ";
     
     int networkCount = 0;
     do {
@@ -117,16 +122,19 @@ void createSubnets() {
         int usedSize = 0;
 
         do {
-            cout << "Name? ";
+            cout << "Name? " << endl;
+            cout << "> ";
             getline(cin,name);
         } while(name == "");
         
         
-        cout << "Beschreibung? ";
+        cout << "Beschreibung? " << endl;
+        cout << "> ";
         getline(cin,description);
                 
         do {
-            cout << "Größe? ";
+            cout << "Größe? " << endl;
+            cout << "> ";
             scanf("%d",&networkSize);
             cin.ignore();
             if(networkSize <= 0 || networkSize >= 256) {
@@ -246,6 +254,7 @@ void editSubnet(int menu_input){
         cout << "2 - Beschreibung" << endl;
         cout << "3 - IP mit Hostnamen und Beschreibung hinzufügen" << endl;
         cout << "0 - Bearbeitung beenden" << endl;
+        cout << "> ";
         
         scanf("%d",&eingabe);
         switch (eingabe) {
@@ -253,6 +262,7 @@ void editSubnet(int menu_input){
             case 1: {
                 string name = "";
                 cout << "Geben Sie einen neuen Namen ein:" << endl;
+                cout << "> ";
                 cin.ignore();
                 getline(cin, name); 
                 usedSubnets[menu_input].setName(name);
@@ -262,6 +272,7 @@ void editSubnet(int menu_input){
             case 2: {
                 string description = "";
                 cout << "Geben Sie eine neue Beschreibung ein:" << endl;
+                cout << "> ";
                 cin.ignore();
                 getline(cin, description); 
                 usedSubnets[menu_input].setNotice(description);
@@ -299,6 +310,7 @@ void addIPToSubnet(int menu_input) {
     max_broadcast = usedSubnets[menu_input].getBroadCast();
     
     cout << "Wie lautet der letzte Block der IP?" << endl;
+    cout << "> ";
     scanf("%d",&ipBlock4);
     
     ipaddress address = ipaddress::ipaddress(ipBlock1,ipBlock2,ipBlock3,ipBlock4);
