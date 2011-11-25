@@ -14,7 +14,7 @@ using namespace std;
 #include "headers/output.h"
 
 //Funktion um Ausgabe zu zentrieren
-void center(string text)
+void output::center(string text)
 {
   //Textlänge herausfinden
 	int len = text.length();
@@ -85,6 +85,7 @@ void output::showSubnet(vector<subnet> subnetz)
 		//convert(subnetz[i].getRangeStart(),subnetz[i].getRangeStart())
 		//Ausgabe Bereiche
 		//center(subnetz[i].get);
+        center("");
 		center(subnetz[i].getName());
 		center(subnetz[i].getNotice());
 		cout<<"|\n";

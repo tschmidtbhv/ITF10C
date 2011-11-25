@@ -159,4 +159,22 @@ string subnet::getName() {
 string subnet::getNotice() {
     return this->notice;
 }
+
+/**
+ * Setz Notiz für ein Subnetz
+ *
+ * @param Neue Notiz als String
+ */
+void subnet::setNotice(string paramNotice) {
+    this->notice = paramNotice;
+}
+
+/**
+ * Setz Name für ein Subnetz
+ *
+ * @param Neue Notiz als String
+ */
+void subnet::setName(string paramName) {
+    this->name = paramName;
+}
 #endif

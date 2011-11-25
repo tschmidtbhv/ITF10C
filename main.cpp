@@ -10,13 +10,11 @@ using namespace std;
 // Klassen einbinden damit wir diese instanzieren können
 #include "headers/ipaddress.h"
 #include "headers/subnet.h"
+#include "headers/output.h"
 
 int ipBlock1, ipBlock2,ipBlock3, ipBlock4;
 vector<subnet> usedSubnets;
-
-void selectedPoint(int choosenOne);
-long splitAndConvert(string paramIPAddress);
-int nextExpToTwo(int input);
+output* out = new output();
 
 void createSubnets();
 void showSubnetMenu();
@@ -26,7 +24,8 @@ void editSubnet(int menu_input);
 void addIPToSubnet (int menu_input);
 void editIPInSubnet(int menu_input);
 void makeIpBlocks(long max_broadcast);
-
+long splitAndConvert(string paramIPAddress);
+int nextExpToTwo(int input);
 
 int main(void) {
     getNetClassDigets();
@@ -36,35 +35,6 @@ int main(void) {
     return EXIT_SUCCESS;    
 } 
 
-
-/*
- * inputIP
- *  
- * @params int choosenOne  
- *
- */
-void selectedPoint(int choosenOne) {
-    
-    
-    switch (choosenOne) {
-        case 1:
-            createSubnets();
-            break;
-            
-        case 2:
-            //splitAndConvert();
-            break;
-            
-        case 3:
-            
-            //deleteIP();
-            break;
-        default:
-            cout << "Sie haben eine falsche Nummer eingegeben!";
-            break;
-    }
-    
-}
 
 void getNetClassDigets() {
     string input = "";
@@ -220,25 +190,20 @@ void showSubnetMenu() {
     int menu_input = 0;
     int max_value = 0;
     
-    cout << "0 - Beenden" << endl;
-    
-    /* HIER! Müsste Nico's Output-Klasse zum Einsatz kommen --> */
-    for(int i = 0; i < usedSubnets.size(); i++) {
-        cout << (i+1) << " - " << usedSubnets[i].getName() << " (" << usedSubnets[i].getNotice() << ")" << endl;
-        max_value = (i+1);
-    }
-    /* <-- bis hier */
-    
-    cout << "Welches Subnetz möchten Sie bearbeiten? Bitte geben Sie die Zahl ein. " << endl;
-    cout << "Beenden Sie das Programm in dem Sie 0 eingeben." << endl;
-    
     do {
+        out->showSubnet(usedSubnets);
+        max_value = usedSubnets.size();
+    
+        cout << "0 - Beenden" << endl;
+        cout << "Welches Subnetz möchten Sie bearbeiten? Bitte geben Sie die Zahl ein. " << endl;
+        cout << "Beenden Sie das Programm in dem Sie 0 eingeben. " << endl;
+        cout << ">";
         scanf("%d",&menu_input);
-        if(menu_input > 0 && menu_input < max_value) {
-            editSubnet(menu_input);
-                // Subnetz aufrufen, IP-Adresse hinzufügen, Anzeige-Option und wieder 0 - Beenden
+        cout << endl;
+        if(menu_input > 0 && menu_input <= max_value) {
+            editSubnet(menu_input-1);
         } else {
-            cout << "Bitte erneut eingeben.";
+            cout << "Bitte erneut eingeben." << endl;
         }
     } while(menu_input != 0);
     
@@ -253,40 +218,38 @@ void showSubnetMenu() {
  * return void
  *
  */
- 
 void editSubnet(int menu_input){
     
     int eingabe;
     
     do {
-        
-        
         cout << "Sie bearbeiten Subnetz: " << usedSubnets[menu_input].getName() << endl;
         cout << "Beschreibung: " << usedSubnets[menu_input].getNotice() << endl;
         cout << "-----------------------\n" << endl;
         cout << "Was möchten Sie bearbeiten? " << endl;
         cout << "1 - Name" << endl;
         cout << "2 - Beschreibung" << endl;
-        cout << "3 - IP hinzufügen" << endl;
+        cout << "3 - IP mit Hostnamen und Beschreibung hinzufügen" << endl;
         cout << "0 - Bearbeitung beenden" << endl;
         
-        cin >> eingabe;
+        scanf("%d",&eingabe);
         switch (eingabe) {
             
             case 1: {
-                
                 string name = "";
                 cout << "Geben Sie einen neuen Namen ein:" << endl;
+                cin.ignore();
                 getline(cin, name); 
-                usedSubnets[menu_input].name = name;
+                usedSubnets[menu_input].setName(name);
                 break;
             }
                 
             case 2: {
                 string description = "";
                 cout << "Geben Sie eine neue Beschreibung ein:" << endl;
+                cin.ignore();
                 getline(cin, description); 
-                usedSubnets[menu_input].notice = description;
+                usedSubnets[menu_input].setNotice(description);
                 break;
             }
             
@@ -299,7 +262,8 @@ void editSubnet(int menu_input){
                 break;
             }
         }
-    } while (eingabe != 0 && (eingabe == 1 || eingabe == 2 || eingabe == 3));
+        cout << endl;
+    } while (eingabe >= 1 && eingabe <= 3);
     
     return;
 }
@@ -313,20 +277,23 @@ void editSubnet(int menu_input){
  */ 
 
 void addIPToSubnet (int menu_input) {
-    long max_broadcast;
+    long max_broadcast = 0;
     max_broadcast = usedSubnets[menu_input].getBroadCast();
     
-    char  ip[3] = ""; 
-    cout << "Geben Sie die IP ein:" << endl;
-    makeIpBlocks(max_broadcast);
-    cout << "Block 4: " << endl;
-    cin >> ip;
-    ipBlock4 = atoi(ip);
+    cout << "Wie lautet der letzte Block der IP?" << endl;
+    scanf("%d",&ipBlock4);
     
     ipaddress ipaddress = ipaddress::ipaddress(ipBlock1,ipBlock2,ipBlock3,ipBlock4);
-    if (splitAndConvert(ip) < max_broadcast) {
+    
+    if(usedSubnets[menu_input].getRangeStart() <= ipaddress.getLong() &&
+       ipaddress.getLong() <= usedSubnets[menu_input].getRangeEnd()
+       )
+    {
         usedSubnets[menu_input].addIP(ipaddress);
+    } else {
+        cout << "IP liegt nicht in diesem Subnetz!";
     }
+
     return;
 }
 
@@ -404,7 +371,7 @@ int nextExpToTwo(int input) {
 
 void searchForIp(long paramIPAddress) {
     for(int i = 0; i < usedSubnets.size(); i++) {
-        if(usedSubnets[i].getRangeStart() > paramIPAddress && paramIPAddress < usedSubnets[i].getRangeEnd()) {
+        if(usedSubnets[i].getRangeStart() >= paramIPAddress && paramIPAddress <= usedSubnets[i].getRangeEnd()) {
             vector<ipaddress> usedIPAdresses = usedSubnets[i].getAddresses();
             for(int j = 0; j < usedIPAdresses.size(); j++) {
                 if(paramIPAddress == usedIPAdresses[j].getLong()) {

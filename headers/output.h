@@ -8,9 +8,10 @@
 
 class output {
     public:
- 	void showSubnet(vector<subnet> subnetz);
-		void showIpAddresses(vector<ipaddress> ipadressen);
+        void showSubnet(vector<subnet> subnetz);
+        void showIpAddresses(vector<ipaddress> ipadressen);
     private:
+        void center(string text);
 };
 
 #endif
