@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <cstdio>
-#include <cstring>
+#include <string>
 #include <vector>
 #include <math.h>
 using namespace std;
