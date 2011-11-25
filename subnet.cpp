@@ -12,6 +12,7 @@ subnet::subnet() {};
 
 // Konstruktor mit den wichtigen Parametern
 subnet::subnet(
+    int paramSize,
     long paramnetAddress,
     long paramrangeStart,
     long paramrangeEnd,
@@ -20,6 +21,7 @@ subnet::subnet(
     string paramNotice
 )
 {
+    this->size = paramSize;
     this->netAddress = paramnetAddress;
     this->rangeStart = paramrangeStart;
     this->rangeEnd = paramrangeEnd;
@@ -176,5 +178,12 @@ void subnet::setNotice(string paramNotice) {
  */
 void subnet::setName(string paramName) {
     this->name = paramName;
+}
+
+/**
+ * Größe abfragen
+ */
+int subnet::getSize() {
+    return  this->size;
 }
 #endif
