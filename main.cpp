@@ -216,11 +216,23 @@ void showSubnetMenu() {
     
         cout << "0 - Beenden" << endl;
         cout << "Welches Subnetz möchten Sie bearbeiten? Bitte geben Sie die Zahl ein. " << endl;
+        cout << "-1 Suche nach IP Adresse" << endl;
         cout << "Beenden Sie das Programm in dem Sie 0 eingeben. " << endl;
-        cout << ">";
+        cout << "> ";
         scanf("%d",&menu_input);
         cout << endl;
-        if(menu_input == 0) {
+        
+        if (menu_input == -1) {
+        
+            string ipAddress = "";
+            cout << "Geben Sie die zu suchende IP Adresse ein" << endl;
+            cout << "> ";
+            cin.ignore();
+            getline(cin, ipAddress);
+            searchForIp(splitAndConvert(ipAddress));
+            break;
+        
+        } else if(menu_input == 0) {
             break;
         }
         else if(menu_input > 0 && menu_input <= max_value) {
