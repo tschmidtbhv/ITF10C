@@ -17,12 +17,12 @@ using namespace std;
 void output::center(string text)
 {
   //Textlänge herausfinden
-	int len = text.length();
+	int len = (int)text.length();
     //Test ob länge durch 2 teilbar
 	if (len%2 != 0)
 		{
 			text = text + " ";
-			len = text.length();
+			len = (int)text.length();
 		}
 	//Test ob maximal länge der Spalte überschritten wird
 	else if (len >23 )
@@ -43,7 +43,7 @@ void output::center(string text)
     printf("%*s",len,"");
 }
 
-string convert(long start, long end)
+string output::convert(long start, long end)
 {	
 	stringstream sstart;
 	stringstream ssend;
@@ -56,6 +56,7 @@ string convert(long start, long end)
 	sstart >> start;
 	ssend  >> end; 
 }
+
 //Zeigt Subnetze in Liste an
 void output::showSubnet(vector<subnet> subnetz)
 {

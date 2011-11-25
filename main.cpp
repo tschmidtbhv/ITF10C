@@ -192,7 +192,7 @@ void showSubnetMenu() {
     
     do {
         out->showSubnet(usedSubnets);
-        max_value = usedSubnets.size();
+        max_value = (int)usedSubnets.size();
     
         cout << "0 - Beenden" << endl;
         cout << "Welches Subnetz möchten Sie bearbeiten? Bitte geben Sie die Zahl ein. " << endl;
