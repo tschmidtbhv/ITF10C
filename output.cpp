@@ -97,7 +97,7 @@ void output::showSubnet(vector<subnet> subnetz)
             cout<<"|";
             printf("%i",i);
         }
-		string range = convert(subnetz[i].getNetAdress,subnetz[i].getBroadCast);
+		string range = convert(subnetz[i].getNetAdress(),subnetz[i].getBroadCast());
 		center(range);
 		center(subnetz[i].getName());
 		center(subnetz[i].getNotice());
