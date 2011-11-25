@@ -21,15 +21,12 @@ int nextExpToTwo(int input);
 void createSubnets();
 void showSubnetMenu();
 void getNetClassDigets();
-<<<<<<< HEAD
 void searchForIp(long paramIPAddress);
-=======
 void editSubnet(int menu_input);
 void addIPToSubnet (int menu_input);
 void editIPInSubnet(int menu_input);
 void makeIpBlocks(long max_broadcast);
 
->>>>>>> 09338c05fd0b47ba568db46c86ac1a4dbaa7610d
 
 int main(void) {
     getNetClassDigets();
