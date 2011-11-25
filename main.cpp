@@ -216,7 +216,7 @@ void showSubnetMenu() {
     
         cout << "0 - Beenden" << endl;
         cout << "Welches Subnetz möchten Sie bearbeiten? Bitte geben Sie die Zahl ein. " << endl;
-        cout << "-1 Suche nach IP Adresse" << endl;
+        cout << "Benutzen Sie -1 um nach IP Adressen zu suchen." << endl;
         cout << "Beenden Sie das Programm in dem Sie 0 eingeben. " << endl;
         cout << "> ";
         scanf("%d",&menu_input);
