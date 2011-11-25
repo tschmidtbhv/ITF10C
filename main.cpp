@@ -240,7 +240,8 @@ void editSubnet(int menu_input){
         cout << "Was möchten Sie bearbeiten? " << endl;
         cout << "1 - Name" << endl;
         cout << "2 - Beschreibung" << endl;
-        cout << "3 - IP mit Hostnamen und Beschreibung hinzufügen" << endl;
+        cout << "3 - IP Suchen" << endl;
+        cout << "4 - IP mit Hostnamen und Beschreibung hinzufügen" << endl;
         cout << "0 - Bearbeitung beenden" << endl;
         cout << "> ";
         
@@ -267,7 +268,18 @@ void editSubnet(int menu_input){
                 break;
             }
             
+            
             case 3: {
+                string ipAddress = "";
+                cout << "Geben Sie die zu suchende IP Adresse ein" << endl;
+                cout << "> ";
+                cin.ignore();
+                getline(cin, ipAddress);
+                searchForIp(splitAndConvert(ipAddress));
+                break;
+            }
+                
+            case 4: {
                 addIPToSubnet(menu_input);
                 break;
             }
@@ -396,6 +408,15 @@ int nextExpToTwo(int input) {
     
     return calculate;
 }
+
+/*
+ * searchForIp
+ * @params paramIPAddress
+ *
+ *
+ *
+ *
+ */
 
 void searchForIp(long paramIPAddress) {
     for(int i = 0; i < usedSubnets.size(); i++) {
