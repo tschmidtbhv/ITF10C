@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <cstdio>
-#include <string>
+#include <cstring>
 #include <vector>
 #include <math.h>
 using namespace std;
@@ -208,7 +208,10 @@ void showSubnetMenu() {
         cout << ">";
         scanf("%d",&menu_input);
         cout << endl;
-        if(menu_input > 0 && menu_input <= max_value) {
+        if(menu_input == 0) {
+            break;
+        }
+        else if(menu_input > 0 && menu_input <= max_value) {
             editSubnet(menu_input-1);
         } else {
             cout << "Bitte erneut eingeben." << endl;
@@ -288,20 +291,34 @@ void editSubnet(int menu_input){
  */ 
 
 void addIPToSubnet (int menu_input) {
+    
     long max_broadcast = 0;
+    bool value = false;
+    vector<ipaddress> usedAdresses;
     max_broadcast = usedSubnets[menu_input].getBroadCast();
     
     cout << "Wie lautet der letzte Block der IP?" << endl;
     cout << "> ";
     scanf("%d",&ipBlock4);
     
-    ipaddress ipaddress = ipaddress::ipaddress(ipBlock1,ipBlock2,ipBlock3,ipBlock4);
+    ipaddress address = ipaddress::ipaddress(ipBlock1,ipBlock2,ipBlock3,ipBlock4);
     
-    if(usedSubnets[menu_input].getRangeStart() <= ipaddress.getLong() &&
-       ipaddress.getLong() <= usedSubnets[menu_input].getRangeEnd()
+    if(usedSubnets[menu_input].getRangeStart() <= address.getLong() &&
+       address.getLong() <= usedSubnets[menu_input].getRangeEnd()
        )
     {
-        usedSubnets[menu_input].addIP(ipaddress);
+        usedAdresses = usedSubnets[menu_input].getAddresses();
+        for(int i = 0; i < usedAdresses.size(); i++) {
+            if(usedAdresses[i].getLong() == address.getLong()) {
+                value = true;
+            }
+        }
+        if(value == false) {
+            cout << "Ip-Adresse wird hinzugefügt." << endl;
+            usedSubnets[menu_input].addIP(address); 
+        } else {
+            cout << "IP-Adresse bereits vorhanden." << endl;
+        }
     } else {
         cout << "IP liegt nicht in diesem Subnetz!";
     }
@@ -324,7 +341,6 @@ void editIPInSubnet(int menu_input) {
     for (int i = 0; i < addresses.size(); i++) {
         cout << "ip: " << addresses[i].getString();
     }
-    
     
     return;
 }
