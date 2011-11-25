@@ -259,7 +259,7 @@ void editSubnet(int menu_input){
     do {
         cout << "Sie bearbeiten Subnetz: " << usedSubnets[menu_input].getName() << endl;
         cout << "Beschreibung: " << usedSubnets[menu_input].getNotice() << endl;
-        out->showIpAddresses(usedSubnets[menu_input].getAddresses());
+        out->showIpAddresses(usedSubnets[menu_input]);
         cout << "Größe: " << usedSubnets[menu_input].getSize() << endl;
         cout << "-----------------------\n" << endl;
         cout << "Was möchten Sie bearbeiten? " << endl;

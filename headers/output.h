@@ -9,7 +9,7 @@
 class output {
     public:
         void showSubnet(vector<subnet> subnetz);
-        void showIpAddresses(vector<ipaddress> ipadressen);
+        void showIpAddresses(subnet paramSubnet);
         string convert(long paramInput);
     private:
         void center(string text);
