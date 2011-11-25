@@ -55,6 +55,7 @@ string output::convert(long start, long end)
 	
 	sstart >> start;
 	ssend  >> end; 
+    return "";
 }
 
 //Zeigt Subnetze in Liste an

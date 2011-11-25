@@ -141,7 +141,7 @@ void createSubnets() {
                 cout << "Diese Größe ist nicht zulässig, wählen Sie eine Größe zwischen 0 und 256." << endl;
             }
             
-            usedSize = 0;
+            usedSize = networkSize;
             for(int i = 0; i < usedSubnets.size(); i++) {
                 usedSize += usedSubnets[i].getSize();
             }
@@ -248,6 +248,8 @@ void editSubnet(int menu_input){
     do {
         cout << "Sie bearbeiten Subnetz: " << usedSubnets[menu_input].getName() << endl;
         cout << "Beschreibung: " << usedSubnets[menu_input].getNotice() << endl;
+        out->showIpAddresses(usedSubnets[menu_input].getAddresses());
+        cout << "Größe: " << usedSubnets[menu_input].getSize() << endl;
         cout << "-----------------------\n" << endl;
         cout << "Was möchten Sie bearbeiten? " << endl;
         cout << "1 - Name" << endl;
@@ -424,12 +426,7 @@ int nextExpToTwo(int input) {
 /*
  * searchForIp
  * @params paramIPAddress
- *
- *
- *
- *
  */
-
 void searchForIp(long paramIPAddress) {
     for(int i = 0; i < usedSubnets.size(); i++) {
         if(usedSubnets[i].getRangeStart() >= paramIPAddress && paramIPAddress <= usedSubnets[i].getRangeEnd()) {
