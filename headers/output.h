@@ -10,7 +10,7 @@ class output {
     public:
         void showSubnet(vector<subnet> subnetz);
         void showIpAddresses(vector<ipaddress> ipadressen);
-        string convert(long start, long end);
+        string convert(long paramInput);
     private:
         void center(string text);
 };

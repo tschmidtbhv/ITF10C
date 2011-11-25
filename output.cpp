@@ -25,10 +25,10 @@ void output::center(string text)
 			len = (int)text.length();
 		}
 	//Test ob maximal länge der Spalte überschritten wird
-	else if (len >23 )
+	else if (len > 23 )
 		{
 			//kürzen der Ausgabe
-			text = text.substr(0,21);
+			text = text.substr(0,20);
 			//auffüllen mit Punkten
 			text = text + "...";
 		}
@@ -43,19 +43,13 @@ void output::center(string text)
     printf("%*s",len,"");
 }
 
-string output::convert(long start, long end)
+string output::convert(long paramInput)
 {	
-	stringstream sstart;
-	stringstream ssend;
-	string range;
+	stringstream input;
 
-	sstart << start;
-	ssend << end;
-
-	range = sstart.str();
-	range = range + " - ";
-	range = range + ssend.str();
-	return range;
+    input << paramInput;
+    
+	return input.str();
 }
 
 //Zeigt Subnetze in Liste an
@@ -97,7 +91,15 @@ void output::showSubnet(vector<subnet> subnetz)
             cout<<"|";
             printf("%i",i);
         }
-		string range = convert(subnetz[i].getNetAdress(),subnetz[i].getBroadCast());
+        
+        string netaddress = convert(subnetz[i].getNetAdress());
+        netaddress = netaddress.substr(9,3);
+        
+        string broadcast =  convert(subnetz[i].getBroadCast());
+        broadcast = broadcast.substr(9,3);
+        
+        string range = netaddress + " - " + broadcast;
+        
 		center(range);
 		center(subnetz[i].getName());
 		center(subnetz[i].getNotice());
@@ -146,7 +148,4 @@ void output::showIpAddresses(vector<ipaddress> ipadressen)
     cout<<"\n";
 
 }
-
-
-
 #endif
