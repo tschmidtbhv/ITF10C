@@ -25,10 +25,10 @@ void output::center(string text)
 			len = (int)text.length();
 		}
 	//Test ob maximal länge der Spalte überschritten wird
-	else if (len >23 )
+	else if (len > 23 )
 		{
 			//kürzen der Ausgabe
-			text = text.substr(0,21);
+			text = text.substr(0,20);
 			//auffüllen mit Punkten
 			text = text + "...";
 		}
@@ -43,19 +43,13 @@ void output::center(string text)
     printf("%*s",len,"");
 }
 
-string output::convert(long start, long end)
+string output::convert(long paramInput)
 {	
-	stringstream sstart;
-	stringstream ssend;
-	string range;
+	stringstream input;
 
-	sstart << start;
-	ssend << end;
-
-	range = sstart.str();
-	range = range + " - ";
-	range = range + ssend.str();
-	return range;
+    input << paramInput;
+    
+	return input.str();
 }
 
 //Zeigt Subnetze in Liste an
@@ -90,14 +84,22 @@ void output::showSubnet(vector<subnet> subnetz)
 		if (i<10)
 		{
             cout<<"| ";
-            printf("%i",i);
+            printf("%i",i+1);
         }
         else
         {
             cout<<"|";
-            printf("%i",i);
+            printf("%i",i+1);
         }
-		string range = convert(subnetz[i].getNetAdress(),subnetz[i].getBroadCast());
+        
+        string netaddress = convert(subnetz[i].getNetAdress());
+        netaddress = netaddress.substr(9,3);
+        
+        string broadcast =  convert(subnetz[i].getBroadCast());
+        broadcast = broadcast.substr(9,3);
+        
+        string range = netaddress + " - " + broadcast;
+        
 		center(range);
 		center(subnetz[i].getName());
 		center(subnetz[i].getNotice());
@@ -111,8 +113,11 @@ void output::showSubnet(vector<subnet> subnetz)
 }
 
 //Zeigt IP-Adressen in Liste an
-void output::showIpAddresses(vector<ipaddress> ipadressen)
+void output::showIpAddresses(subnet paramSubnet)
 {
+    vector<ipaddress> ipadressen = paramSubnet.getAddresses();
+    
+    
 	//Header definieren
 	string ip = "IP";
     string name = "Hostnamen";
@@ -133,11 +138,35 @@ void output::showIpAddresses(vector<ipaddress> ipadressen)
     cout<<"\n";
 
 	//Ausgabe der IP Eigenschaften
-	for(int i = 0; i < ipadressen.size();i++)
+	for(long i = paramSubnet.getNetAdress(); i <= paramSubnet.getBroadCast(); i++)
 	{
-		center(ipadressen[i].getString());
-		center(ipadressen[i].getHostName());
-		center(ipadressen[i].getNotice());
+        string ip = convert(i);
+        string ipview = ip.substr(0,3) + "." + ip.substr(3,3) +  "." + ip.substr(6,3) + "." + ip.substr(9,3);
+		center(ipview);
+        
+        if(i == paramSubnet.getNetAdress()) {
+            center("Netzadresse");
+            center("-");
+        } 
+        else if(i == paramSubnet.getBroadCast()) 
+        {
+            center("Broadcast-Adresse");
+            center("-");
+        } else {
+            bool found = false;
+            for(int j = 0; j < ipadressen.size(); i++) {
+                if(ipadressen[j].getLong() == i) {
+                    found = true;
+                    center(ipadressen[j].getHostName());
+                    center(ipadressen[i].getNotice());
+                }
+            } 
+            if(found == false) {
+                center("-");
+                center("-");
+            }
+        }
+		
 		cout<<"|\n";
 	}
 	printf("%s","+------------------------");
@@ -146,7 +175,4 @@ void output::showIpAddresses(vector<ipaddress> ipadressen)
     cout<<"\n";
 
 }
-
-
-
 #endif

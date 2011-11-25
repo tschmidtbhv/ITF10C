@@ -2,9 +2,10 @@
 #include <iostream>
 #include <sstream>
 #include <cstdio>
-#include <cstring>
+#include <string>
 #include <vector>
 #include <math.h>
+#include <algorithm>
 using namespace std;
 
 // Klassen einbinden damit wir diese instanzieren können
@@ -173,6 +174,7 @@ void createSubnets() {
             string ipString = ipStream.str();
 
             usedSubnets.push_back(
+
                                   subnet(networkSize,
                                          splitAndConvert(ipString),
                                     (splitAndConvert(ipString)+1),
@@ -259,7 +261,7 @@ void editSubnet(int menu_input){
     do {
         cout << "Sie bearbeiten Subnetz: " << usedSubnets[menu_input].getName() << endl;
         cout << "Beschreibung: " << usedSubnets[menu_input].getNotice() << endl;
-        out->showIpAddresses(usedSubnets[menu_input].getAddresses());
+        out->showIpAddresses(usedSubnets[menu_input]);
         cout << "Größe: " << usedSubnets[menu_input].getSize() << endl;
         cout << "-----------------------\n" << endl;
         cout << "Was möchten Sie bearbeiten? " << endl;
@@ -396,13 +398,13 @@ long splitAndConvert(string paramIPAddress) {
     while(pch != NULL) {
         switch(iteration) {
             case 0:
-                output += atoi(pch) * pow(10,9);
+                output += atoi(pch) * pow(10.0,9.0);
                 break;
             case 1:
-                output += atoi(pch) * pow(10,6);
+                output += atoi(pch) * pow(10.0,6.0);
                 break;
             case 2:
-                output += atoi(pch) * pow(10,3);
+                output += atoi(pch) * pow(10.0,3.0);
                 break;
             case 3:
                 output += atoi(pch);
@@ -426,7 +428,7 @@ int nextExpToTwo(int input) {
     int calculate = 0;
 
     for(int i = 0; calculate <= input; i++) {
-        calculate = pow(2,i);
+        calculate = pow(2.0,i);
     }
 
     return calculate;
@@ -438,17 +440,22 @@ int nextExpToTwo(int input) {
  */
 void searchForIp(long paramIPAddress) {
     for(int i = 0; i < usedSubnets.size(); i++) {
-        if(usedSubnets[i].getRangeStart() >= paramIPAddress && paramIPAddress <= usedSubnets[i].getRangeEnd()) {
+        if(usedSubnets[i].getNetAdress() <= paramIPAddress &&
+           paramIPAddress <= usedSubnets[i].getBroadCast())
+        {
             vector<ipaddress> usedIPAdresses = usedSubnets[i].getAddresses();
+            
             for(int j = 0; j < usedIPAdresses.size(); j++) {
                 if(paramIPAddress == usedIPAdresses[j].getLong()) {
-                    cout << "IP-Adresse gehört zum Subnetz " << usedSubnets[i].getName() << " und hat den Hostname " << usedIPAdresses[j].getHostName() << "." << endl;
+                    cout << "IP-Adresse gehört zum Subnetz " << usedSubnets[i].getName() 
+                    << " und hat den Hostname " << usedIPAdresses[j].getHostName() << "." << endl;
                     return;
                 }
             } 
-            cout << "IP-Adresse gehört zum Subnetz " << usedSubnets[i].getName() << ".";
-        } else {
-            cout << "Die IP-Adresse gehört zu keinem Subnetz." << endl;
-        }
+            
+            cout << "IP-Adresse gehört zum Subnetz " << usedSubnets[i].getName() << "." << endl;
+            return;
+        } 
     }
+    cout << "Die IP-Adresse gehört zu keinem Subnetz." << endl;
 }

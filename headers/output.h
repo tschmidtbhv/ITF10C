@@ -9,8 +9,8 @@
 class output {
     public:
         void showSubnet(vector<subnet> subnetz);
-        void showIpAddresses(vector<ipaddress> ipadressen);
-        string convert(long start, long end);
+        void showIpAddresses(subnet paramSubnet);
+        string convert(long paramInput);
     private:
         void center(string text);
 };
