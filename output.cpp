@@ -47,15 +47,15 @@ string output::convert(long start, long end)
 {	
 	stringstream sstart;
 	stringstream ssend;
-	string rangestart;
-	string rangeend;
+	string range;
 
-	start = start - 1;
-	end = end + 1;
-	
-	sstart >> start;
-	ssend  >> end; 
-    return "";
+	sstart << start;
+	ssend << end;
+
+	range = sstart.str();
+	range = range + " - ";
+	range = range + ssend.str();
+	return range;
 }
 
 //Zeigt Subnetze in Liste an
@@ -64,18 +64,21 @@ void output::showSubnet(vector<subnet> subnetz)
 	//Header definieren
 	string bereich = "Bereich";
     string name = "Name";
-    string notiz = "Notiz"; 
+    string notiz = "Notiz";
+    printf("%s","+--");
     printf("%s","+------------------------");
     printf("%s","+------------------------");
     printf("%s","+------------------------+");
     cout<<"\n";
 	
 	//Ausgabe
+	printf("%s","|Nr");
 	center(bereich);
     center(name);
     center(notiz);
     cout<<"|\n";
 
+    printf("%s","+--");
     printf("%s","+------------------------");
     printf("%s","+------------------------");
     printf("%s","+------------------------+");
@@ -84,14 +87,23 @@ void output::showSubnet(vector<subnet> subnetz)
 	//Ausgabe der Subnetzeigenschaften
 	for(int i = 0; i < subnetz.size();i++)
 	{
-		//convert(subnetz[i].getRangeStart(),subnetz[i].getRangeStart())
-		//Ausgabe Bereiche
-		//center(subnetz[i].get);
-        center("");
+		if (i<10)
+		{
+            cout<<"| ";
+            printf("%i",i);
+        }
+        else
+        {
+            cout<<"|";
+            printf("%i",i);
+        }
+		string range = convert(subnetz[i].getNetAdress,subnetz[i].getBroadCast);
+		center(range);
 		center(subnetz[i].getName());
 		center(subnetz[i].getNotice());
 		cout<<"|\n";
 	}
+	printf("%s","+--");
 	printf("%s","+------------------------");
     printf("%s","+------------------------");
     printf("%s","+------------------------+");
