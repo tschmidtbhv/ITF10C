@@ -24,6 +24,9 @@ class subnet {
          Brauchen wir das, macht das Sinn? 
          Dann klickt bitte auf Daumen hoch neben ndiesem Kommentar. xD 
         */
+    
+        // Größe
+        int size;
         
         // Broadcast-Adresse
 		long broadcast;		
@@ -52,7 +55,8 @@ class subnet {
 		subnet();			
     
         // Konstruktor
-		subnet(long paramnetaddress,
+		subnet(int size,
+               long paramnetaddress,
 				long paramrangeStart,
 				long paramrangeEnd,
 				long parambroadcast,
@@ -102,5 +106,8 @@ class subnet {
     
         // Notiz setzen
         void setNotice(string paramNotice);
+    
+        // Größe abfragen
+        int getSize();
 };
 #endif

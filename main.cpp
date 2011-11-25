@@ -107,10 +107,10 @@ void createSubnets() {
     do {
         scanf ("%d",&networkCount);
         cin.ignore();
-        if(networkCount <= 0 || networkCount >= 11) {
+        if(networkCount < 1 || networkCount > 10) {
             cout << "Bitte wählen Sie eine Zahl im Bereich von 1 bis 10." << endl;
         }
-    } while(networkCount <= 0 || networkCount >= 11);
+    } while(networkCount < 1 || networkCount > 10);
     cout << endl;
 
     for(int i = 0; i < networkCount; i++) {
@@ -119,6 +119,7 @@ void createSubnets() {
         string name = "";
         string description = "";
         int networkSize = 0;
+        int usedSize = 0;
 
         do {
             cout << "Name? " << endl;
@@ -138,6 +139,16 @@ void createSubnets() {
             cin.ignore();
             if(networkSize <= 0 || networkSize >= 256) {
                 cout << "Diese Größe ist nicht zulässig, wählen Sie eine Größe zwischen 0 und 256." << endl;
+            }
+            
+            usedSize = 0;
+            for(int i = 0; i < usedSubnets.size(); i++) {
+                usedSize += usedSubnets[i].getSize();
+            }
+            if(usedSize => 256) {
+                cout << "Eingabe zu groß! Es verbleiben noch " << (256-usedSize) << endl;
+            } else {
+                cout << "Es verbleiben noch " << (256-usedSize) << endl;
             }
         } while(networkSize <= 0 || networkSize >= 256);
         cout << endl;
@@ -162,7 +173,8 @@ void createSubnets() {
             string ipString = ipStream.str();
             
             usedSubnets.push_back(
-                                  subnet(splitAndConvert(ipString),
+                                  subnet(nextExpToTwo(networkSize),
+                                         splitAndConvert(ipString),
                                     (splitAndConvert(ipString)+1),
                                     (splitAndConvert(ipString)+nextExpToTwo(networkSize)-1),
                                     (splitAndConvert(ipString)+nextExpToTwo(networkSize)),
@@ -181,7 +193,7 @@ void createSubnets() {
             }
             
             usedSubnets.push_back(
-                                  subnet(
+                                  subnet(nextExpToTwo(networkSize),
                                     max_broadcast+1,
                                     max_broadcast+2,
                                     max_broadcast+(nextExpToTwo(networkSize)-1),
@@ -302,7 +314,7 @@ void editSubnet(int menu_input){
  *
  */ 
 
-void addIPToSubnet (int menu_input) {
+void addIPToSubnet(int menu_input) {
     
     long max_broadcast = 0;
     bool value = false;
