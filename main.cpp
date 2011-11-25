@@ -145,7 +145,8 @@ void createSubnets() {
                 usedSize += usedSubnets[i].getSize();
             }
             if(usedSize >= 256) {
-                cout << "Eingabe zu groß! Es verbleiben noch " << (256-usedSize) << endl;
+                cout << "Eingabe zu groß! Subnetz wurde nicht hinzugefügt." << endl;
+                return;
             } else {
                 cout << "Es verbleiben noch " << (256-usedSize) << endl;
             }
