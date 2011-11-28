@@ -137,21 +137,22 @@ void createSubnets() {
             cout << "> ";
             scanf("%d",&networkSize);
             cin.ignore();
+            
             if(networkSize <= 0 || networkSize >= 256) {
                 cout << "Diese Größe ist nicht zulässig, wählen Sie eine Größe zwischen 0 und 256." << endl;
             }
-
+            //networkSize = nextExpToTwo(networkSize);
             usedSize = networkSize;
             for(int i = 0; i < usedSubnets.size(); i++) {
                 usedSize += usedSubnets[i].getSize();
             }
-            if(usedSize >= 256) {
+            if(usedSize > 256) {
                 cout << "Eingabe zu groß! Subnetz wurde nicht hinzugefügt." << endl;
                 return;
             } else {
-                cout << "Es verbleiben noch " << (256-usedSize) << endl;
+                cout << "Es verbleiben noch " << (256- nextExpToTwo(usedSize)) << endl;
             }
-        } while(networkSize <= 0 || networkSize >= 256);
+        } while(networkSize <= 0 || networkSize > 256);
         cout << endl;
 
         //Das erste Subnetz wird erstellt
@@ -173,8 +174,9 @@ void createSubnets() {
             string ipString = ipStream.str();
 
             usedSubnets.push_back(
-                                  subnet(nextExpToTwo(networkSize),
-                                    (splitAndConvert(ipString)),
+
+                                  subnet(networkSize,
+                                         splitAndConvert(ipString),
                                     (splitAndConvert(ipString)+1),
                                     (splitAndConvert(ipString)+nextExpToTwo(networkSize)-1),
                                     (splitAndConvert(ipString)+nextExpToTwo(networkSize)),
@@ -193,7 +195,7 @@ void createSubnets() {
             }
 
             usedSubnets.push_back(
-                                  subnet(nextExpToTwo(networkSize),
+                                  subnet(networkSize,
                                     max_broadcast+1,
                                     max_broadcast+2,
                                     max_broadcast+(nextExpToTwo(networkSize)-1),
