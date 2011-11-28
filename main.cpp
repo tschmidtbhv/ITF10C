@@ -41,7 +41,7 @@ void getNetClassDigets() {
     string input = "";
 
     do {
-        cout << "Möchten Sie eine andere Netzklasse nutzen als 192.168.0.X ? (Y/N) " << endl; 
+        cout << "Möchten Sie eine andere Netzbezeichnung nutzen als 192.168.0.X ? (Y/N) " << endl; 
         cout << "> ";
         getline(cin,input);
         // Eingabe in Kleinschreibung umwandeln
@@ -330,14 +330,25 @@ void addIPToSubnet(int menu_input) {
 
     long max_broadcast = 0;
     bool value = false;
+    string name,description = "";
     vector<ipaddress> usedAdresses;
     max_broadcast = usedSubnets[menu_input].getBroadCast();
 
     cout << "Wie lautet der letzte Block der IP?" << endl;
     cout << "> ";
     scanf("%d",&ipBlock4);
+    
+    cout << "Wie ist der Hostname der IP?" << endl;
+    cout << "> ";
+    cin.ignore();
+    getline(cin, name);
+    
+    cout << "Beschreibung der IP?" << endl;
+    cout << "> ";
+    cin.ignore();
+    getline(cin, description);
 
-    ipaddress address = ipaddress::ipaddress(ipBlock1,ipBlock2,ipBlock3,ipBlock4);
+    ipaddress address = ipaddress(ipBlock1,ipBlock2,ipBlock3,ipBlock4,name,description);
 
     if(usedSubnets[menu_input].getRangeStart() <= address.getLong() &&
        address.getLong() <= usedSubnets[menu_input].getRangeEnd()

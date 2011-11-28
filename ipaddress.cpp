@@ -19,15 +19,17 @@ ipaddress::ipaddress() {};
 // Konstruktor für 192.168.XXX.XXX
 ipaddress::ipaddress(
     int paramblock3,
-    int paramblock4
+    int paramblock4,
+    string paramName,
+    string paramNotice
 )
 {
     this->block1 = 192;
     this->block2 = 168;
     this->block3 = paramblock3;
     this->block4 = paramblock4;
-    this->hostname = "";
-    this->notice = "";
+    this->hostname = paramName;
+    this->notice = paramNotice;
 };
 
 
@@ -36,15 +38,17 @@ ipaddress::ipaddress(
     int paramblock1,
     int paramblock2,
     int paramblock3,
-    int paramblock4
+    int paramblock4,
+    string paramName,
+    string paramNotice                   
 )
 {
-    this->block1 = 192;
-    this->block2 = 168;
+    this->block1 = paramblock1;
+    this->block2 = paramblock2;
     this->block3 = paramblock3;
     this->block4 = paramblock4;
-    this->hostname = "";
-    this->notice = "";
+    this->hostname = paramName;
+    this->notice = paramNotice;
 };
 
 

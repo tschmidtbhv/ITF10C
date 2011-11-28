@@ -38,7 +38,9 @@ class ipaddress {
         // Konstruktor für 192.168.XXX.XXX 
 		ipaddress(
             int paramblock3,
-            int paramblock4
+            int paramblock4,
+            string paramName,
+            string paramNotice
         );	
     
     	// Konstruktor für XXX.XXX.XXX.XXX
@@ -46,7 +48,9 @@ class ipaddress {
 			int paramblock1,
 			int paramblock2,
 			int paramblock3,
-			int paramblock4
+			int paramblock4,
+            string paramName,
+            string paramNotice
 		);
     
         // Destruktor 

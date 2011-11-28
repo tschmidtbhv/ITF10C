@@ -158,7 +158,7 @@ void output::showIpAddresses(subnet paramSubnet)
                 if(ipadressen[j].getLong() == i) {
                     found = true;
                     center(ipadressen[j].getHostName());
-                    center(ipadressen[i].getNotice());
+                    center(ipadressen[j].getNotice());
                 }
             } 
             if(found == false) {
