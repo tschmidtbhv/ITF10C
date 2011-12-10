@@ -154,7 +154,7 @@ void output::showIpAddresses(subnet paramSubnet)
             center("-");
         } else {
             bool found = false;
-            for(int j = 0; j < ipadressen.size(); i++) {
+            for(int j = 0; j < ipadressen.size(); j++) {
                 if(ipadressen[j].getLong() == i) {
                     found = true;
                     center(ipadressen[j].getHostName());
